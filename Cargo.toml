@@ -1,0 +1,6 @@
+[package]
+name = "Film-O-Mat"
+version = "0.1.0"
+authors = ["Benedikt Schumacher <bschumacher@uos.de>"]
+
+[dependencies]

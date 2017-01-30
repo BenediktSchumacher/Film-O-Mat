@@ -19,17 +19,3 @@ pub fn download_archiv(url: &str) -> Vec<u8> {
     }
     data
 }
-
-// ***** how to use in main.rs *****
-//
-// let encoded = download_archiv("ftp://ftp.fu-berlin.de/pub/misc/movies/database/complete-crew.\
-// list.gz");
-// let content = decompress_gz(encoded.as_slice()).unwrap();
-//
-// let mut string = String::new();
-// for c in content {
-// string.push(c as char);
-// }
-//
-// println!("{:?}", string);
-//

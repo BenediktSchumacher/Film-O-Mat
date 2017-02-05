@@ -4,3 +4,4 @@ version = "0.1.0"
 authors = ["Benedikt Schumacher <bschumacher@uos.de>"]
 
 [dependencies]
+term-painter = "0.2"

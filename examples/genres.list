@@ -1,0 +1,867 @@
+CRC: 0x61A3A927  File: genres.list  Date: Fri Jan 27 00:00:00 2017
+
+-----------------------------------------------------------------------------
+
+                            This is the Genres List
+
+            Maintained by: Jake Dias <genres@imdb.com>
+
+-----------------------------------------------------------------------------
+
+1: Index
+========
+
+   #  Paragraph
+   -  ----------------
+   1: Index
+   2: Disclaimer
+   3: Facts & Figures
+   4: The Genres
+   5: Submission Rules
+   6: Other Lists
+   7: Copying Policy: Internet Movie Database (IMDb)
+   8: The Genres List
+
+
+2: Disclaimer
+=============
+
+  This list is not what I call good reading material.  It is maintained so
+  you can search The Internet Movie Database for titles that fit certain
+  categories.  If a movie is incorrectly listed here, please spare a
+  few minutes to update it.
+
+
+3: Facts & Figures
+==================
+
+There are currently 1346897 titles with genres.
+There are currently 2431074 genres.dbs main genres entries.
+
+Breakdown of the main genres and the number of times they appear :
+
+Short    	 607517
+Drama    	 380551
+Comedy    	 277133
+Documentary    	 242483
+Adult    	 77961
+Action    	 74415
+Thriller    	 74249
+Romance    	 73859
+Animation    	 59993
+Family    	 58377
+Horror    	 57249
+Music    	 54832
+Crime    	 51833
+Adventure    	 45538
+Fantasy    	 41327
+Sci-Fi    	 37700
+Mystery    	 34765
+Biography    	 29441
+History    	 25568
+Sport    	 24259
+Musical    	 19600
+War    	 17543
+Reality-TV    	 16147
+Western    	 15733
+News    	 14863
+Talk-Show    	 11732
+Game-Show    	 5673
+Film-Noir    	 727
+Sex    	 1
+Lifestyle    	 1
+Hardcore    	 1
+Experimental    	 1
+Erotica    	 1
+Commercial    	 1
+
+4: The Genres
+=============
+
+   The genres list exists for the sole purpose of increasing the
+   searchability of The Internet Movie Database.
+
+   Genres are the common categories in which we can classify movies,
+   there aren't that many of them.
+
+   The name and number of Genres are subject to change over time.
+
+   The Genres:
+
+        Action          Adventure       Adult 		Animation
+	Comedy		Crime		Documentary	Drama
+	Fantasy		Family		Film-Noir	Horror
+	Musical		Mystery		Romance		Sci-Fi
+	Short		Thriller	War		Western
+
+   No white space is allowed.  ie "Film Noir" is wrong; its "Film-Noir"
+   They start with an uppercase letter.
+
+
+5: Submission Rules
+===================
+
+   How To Add Genres
+   -----------------
+
+   Send email to   adds@imdb.com   with the subject "ADD".  Above the
+   data you write the word "GENRE" on a line by itself.  "GENRES" also works.
+
+   Under that you write the titles and genres like this:
+
+      <title>|<genre>
+
+   When there are more genres for a movie, simply add them on
+   multiple lines under each other, like this:
+
+      <title1>|<genre1>
+      <title1>|<genre2>
+      <title1>|<genre3>
+
+   When you do it that way, the most important genres should come on top,
+   and the least important genres on the bottom.  The order should
+   represent how valid the genres are.
+
+   Example:
+
+      To: adds@imdb.com
+      Subject: ADD
+
+      GENRES
+      Saving Private Ryan (1998)|Drama
+      Saving Private Ryan (1998)|War
+      Speed (1994)|Action
+      Speed (1994)|Thriller
+      END
+
+   Some examples on genres you shouldn't add:
+
+        Incorrect genres                   Correct genres
+        ----------------                   --------------
+        Science Fiction                    Sci-Fi
+
+        Short Documentary                  Documentary
+                                         + Short
+
+        Action, Thriller                   Action
+                                         + Thriller
+
+        COMEDY                             Comedy
+
+   Also bear in mind that a movie is not necessarily a "Comedy" just
+   because there are a few quick remarks or funny jokes in it.  It happens
+   too often that movies are registered with incorrect genres.  It's not
+   a disaster, but it is annoying for the person renting "Schindler's List"
+   to watch a good "Horror" movie.
+
+   If a film contains moments, or aspects of a genre, do NOT put it
+   as a main genre.  Instead put the "aspect" as a Keyword separately.
+   ie "Ghostbusters (1984)|horror".  Keywords is a separate list.
+
+   GUIDE TO CORRECT GENRES
+   -----------------------
+
+   Sometimes genres that don't fit a movie are added, and they should be
+   removed as soon as possible.
+
+   To remove a genre from a movie, just put a "!" in front of the line,
+   like this (to remove the genre "Horror" from "Schindlers' List":
+
+      GENRES
+      !Schindler's List (1993)|Horror
+      END
+
+   If the genres in a movie are in a crazy order you can re-order them
+   by deleting them first and then adding them in the "correct" order.
+
+
+6: Other Lists
+==============
+
+
+The Internet Movie Database consists of the following lists:
+
+ List                 | Maintained by                             | Updated
+ ---------------------|-------------------------------------------|----------
+ Actors               | Giancarlo Cairella http://imdb.com/contact| 24-06-05
+ Actresses            | Giancarlo Cairella http://imdb.com/contact| 24-06-05
+ Alternative Names    | Duncan Smith http://imdb.com/contact/     | 24-06-05
+ Alternative Titles   | Michel Hafner http://imdb.com/contact/    | 17-06-05
+ Alternative Versions | Giancarlo Cairella http://imdb.com/contact| 17-06-05
+ Biographies          | Geoff Leonard http://imdb.com/contact/    | 24-06-05
+ Business             | Giancarlo Cairella http://imdb.com/contact| 17-06-05
+ Cast Completion      | Giancarlo Cairella http://imdb.com/contact| 17-06-05
+ Certificates         | Peter Simeon http://imdb.com/contact/     | 24-06-05
+ Cinematographers     | Michel Hafner http://imdb.com/contact/    | 17-06-05
+ Color Information    | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ Composers            | Michel Hafner http://imdb.com/contact/    | 17-06-05
+ Costume Designers    | Duncan Smith http://imdb.com/contact/     | 17-06-05
+ Countries            | Peter Simeon http://imdb.com/contact/     | 17-06-05
+ Crazy Credits        | Mark Bailey http://imdb.com/contact/      | 17-06-05
+ Crew Completion      | Giancarlo Cairella http://imdb.com/contact| 17-06-05
+ Directors            | Duncan Smith http://imdb.com/contact/     | 17-06-05
+ Distributors         | Peter Simeon http://imdb.com/contact/     | 24-06-05
+ Editors              | Duncan Smith http://imdb.com/contact/     | 17-06-05
+ Genres               | Jake Dias http://imdb.com/contact/        | 24-06-05
+ Goofs                | Col Needham http://imdb.com/contact/      | 24-06-05
+ Keywords             | Jake Dias http://imdb.com/contact/        | 24-06-05
+ Languages            | Peter Simeon http://imdb.com/contact/     | 24-06-05
+ Laser Discs          | Peter Simeon http://imdb.com/contact/     | 07-21/00
+ Literature           | Giancarlo Cairella http://imdb.com/contact| 17-06-05
+ Locations            | Mark Bailey http://imdb.com/contact/      | 17-06-05
+ MPAA Ratings Reasons | Jon Reeves http://imdb.com/contact/       | 17-06-05
+ Misc. Companies      | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ Misc. Filmography    | Peter Simeon http://imdb.com/contact/     | 24-06-05
+ Movie Links          | Ron Higgins http://imdb.com/contact/      | 24-06-05
+ Movies               | Michel Hafner http://imdb.com/contact/    | 17-06-05
+ Plot Summaries       | Colin Tinto http://imdb.com/contact/      | 24-06-05
+ Producers            | Andre Bernhardt http://imdb.com/contact/  | 17-06-05
+ Production Companies | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ Production Designers | Duncan Smith http://imdb.com/contact/     | 17-06-05
+ Quotes               | Col Needham http://imdb.com/contact/	  | 24-06-05
+ Ratings              | IMDb Helpdesk http://imdb.com/contact/    | 24-06-05
+ Release Dates        | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ Running Times        | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ SFX Companies        | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ Sound Mix            | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ Soundtracks          | Ron Higgins http://imdb.com/contact/      | 24-06-05
+ Tag Lines            | Mark Bailey http://imdb.com/contact/      | 24-06-05
+ Technical Info       | Peter Simeon http://imdb.com/contact/     | 24-06-05
+ Trivia               | Tim Norris http://imdb.com/contact/	  | 24-06-05
+ Writers              | Duncan Smith http://imdb.com/contact/     | 17-06-05
+ ----------------------------------------------------------------------------
+  								    dd/mm/yy
+
+SEARCHING THE DATABASE
+======================
+
+The movie database frequently asked questions list contains more information
+on the whole movie database project. For a copy send an e-mail message with
+the subject "HELP FAQ" to <mail-server@imdb.com>. Here is a summary of the
+ways to access the database:
+
+(1) WWW interface
+
+    The Internet Movie Database is available over the WWW. The following sites
+    are owned and operated by or for the IMDb:
+
+        http://us.imdb.com/                                 [USA]
+        http://uk.imdb.com/                                 [UK]
+
+    News and pointers to all IMDb sites are available at IMDb HQ:
+
+        http://www.imdb.com/
+
+(2) e-mail interface
+
+    For details send a message with the subject HELP to <mail-server@imdb.com>
+
+(3) local installation (Unix/Amiga)
+
+    The movie database package enables you to install the data locally and
+    provides a variety of search tools. It is available via anonymous FTP:
+
+ uiarchive.cso.uiuc.edu  in  /pub/info/imdb/tools/moviedb-3.4a.tar.gz
+
+ ftp.funet.fi  in  /pub/culture/tv+film/database/tools/moviedb-3.4a.tar.gz
+
+ ftp.fu-berlin.de  in  /pub/misc/movies/database/tools/moviedb-3.4a.tar.gz
+
+ ftp.sunet.se  in  /pub/tv+movies/imdb/tools/moviedb-3.4a.tar.gz
+
+    see the README file in the same directories for more information. The
+    Amiga version is in the file imdb3_5_Amiga.lha
+
+(4) local installation (OS/2)
+
+    The Alternative Movie Database package provides a graphical and text
+    based interface for OS/2:
+
+     uiarchive.cso.uiuc.edu  in  /pub/info/imdb/tools/os2/
+
+     ftp.funet.fi  in  /pub/culture/tv+film/database/tools/os2/
+
+     ftp.fu-berlin.de  in  pub/misc/movies/database/tools/os2/
+
+     ftp.sunet.se  in  /pub/tv+movies/imdb/tools/os2/
+
+(5) local installation (Windows 9x/Windows NT)
+
+    The Alternative Movie Database package is also available as a text only
+    interface for Win-32 systems (9x/NT):
+
+     uiarchive.cso.uiuc.edu  in  /pub/info/imdb/tools/w32/
+
+     ftp.funet.fi  in  /pub/culture/tv+film/database/tools/w32/
+
+     ftp.fu-berlin.de  in  pub/misc/movies/database/tools/w32/
+
+     ftp.sunet.se  in  /pub/tv+movies/imdb/tools/w32/
+
+
+7: Copying Policy: Internet Movie Database (IMDb)
+=================================================
+
+    This is a  database  of  movie  related  information  compiled  by
+    Internet  Movie  Database  Ltd (IMDb). While every effort has been
+    made to  ensure  the  accuracy  of  the  database  IMDb  gives  no
+    warranty  as  to  the accuracy of the information contained in the
+    database.  IMDb  reserves  the  right  to   withdraw   or   delete
+    information at any time.
+
+    This service is provided for the information of users only. It  is
+    not   provided  with  the  intention  that  users  rely  upon  the
+    information for any purposes. Accordingly,  IMDb  shall  under  no
+    circumstances  be liable for any loss or damage, including but not
+    limited to loss of profits, goodwill or indirect or  consequential
+    loss   arising   out   of  any  use  of  or  inaccuracies  in  the
+    information. All warranties express or  implied  are  excluded  to
+    the fullest extent permissible by law.
+
+    All information in this file is Copyright 1993-2002 Internet Movie
+    Database  Limited.  Reproduction,  distribution or transmission by
+    any means without the prior permission of IMDb is prohibited.  All
+    rights reserved.
+
+    For further information contact <licensing@imdb.com>
+
+         -------------------------------------------------------
+
+    All data and software released by Internet Movie Database  Ltd  is
+    freely  available  to  anyone  within certain limitations. You are
+    encouraged to quote subsets of the database  in  USENET  articles,
+    movie  related  FAQs,  magazine  articles etc. We do ask, however,
+    that you make reference to the source of the data  and  provide  a
+    pointer to the database for the benefit of the reader.
+
+    Permission is granted  by  the  copyright  holder  to  allow  free
+    distribution  of  this  file  and  any  other part of the Internet
+    Movie  Database  in  an  ELECTRONIC  FORM  ONLY,   providing   the
+    following conditions are met:
+
+         1. NO FEE OF ANY KIND, however indirect, will be  charged
+            for  its  distribution.  If  this file is being stored
+            for  later  distribution  to  anyone   that   can   be
+            construed   as   a   customer   of  yourself  or  your
+            organisation YOU MUST contact Internet Movie  Database
+            Ltd for permission.
+
+         2. Each  of  the  database  files  may   be   distributed
+            individually  but  only  in an unaltered form. All the
+            header and trailer information, including this  notice
+            and  the  details  on how to access the database, must
+            remain intact.
+
+         3. Specifically the files may NOT be  used  to  construct
+            any  kind  of  on-line database (except for individual
+            personal use). Clearance for  ALL  such  on-line  data
+            resources   must  be  requested  from  Internet  Movie
+            Database Ltd
+
+         4. In addition, copies of  the  Internet  Movie  Database
+            frequently  asked  questions  list and additions guide
+            must be made available in the same area / by the  same
+            method as the other database files.
+
+         5. CD-ROM  distribution  is  prohibited  without  written
+            permission from the Internet Movie Database Ltd
+
+    Distribution by e-mail, BBS and  Internet  systems  is  positively
+    encouraged within these limitations.
+
+    The files and software which make up the  movie  database  may  be
+    uploaded  to  commercial  BBS  systems  providing  that  the above
+    conditions are met and no *additional* fees are applied above  the
+    standard connect time or downloading charges.
+
+    For further information contact <licensing@imdb.com>
+
+
+8: THE GENRES LIST
+==================
+
+"!Next?" (1994)						Documentary
+"#1 Single" (2006)					Reality-TV
+"#15SecondScare" (2015)					Horror
+"#15SecondScare" (2015)					Short
+"#15SecondScare" (2015)					Thriller
+"#15SecondScare" (2015) {Who Wants to Play with the Rabbit? (#1.2)}	Drama
+"#15SecondScare" (2015) {Who Wants to Play with the Rabbit? (#1.2)}	Horror
+"#15SecondScare" (2015) {Who Wants to Play with the Rabbit? (#1.2)}	Short
+"#15SecondScare" (2015) {Who Wants to Play with the Rabbit? (#1.2)}	Thriller
+"#1MinuteNightmare" (2014)				Horror
+"#2G1S" (2016)						Crime
+"#2WheelzNHeelz" (2017)					Reality-TV
+"#30Nods Trailer" (2016)				Drama
+"#30Nods" (2016)					Drama
+"#7DaysLater" (2013)					Comedy
+"#ATown" (2014)						Comedy
+"#ActorsLife" (2016)					Talk-Show
+"#Actress" (2014)					Comedy
+"#Adulthood" (????)					Comedy
+"#Adulting" (2016/I)					Comedy
+"#Adulting" (2016/II)					Comedy
+"#Awkward Dates" (2016)					Comedy
+"Pequeñeces" (2010)					Comedy
+"Pequeñeces" (2010)					Family
+"Pequeñeces" (2010)					Musical
+"Pequeño estudio" (1968)				Comedy
+"Pequeños gigantes" (1983)				Comedy
+"Pequeños gigantes" (2011)				Musical
+"Pequeños gigantes" (2011)				Reality-TV
+"Pequeños grandes genios" (2001)			Family
+"Pequeños... Grandes lecciones" (1993)			Reality-TV
+"Per Anhalter durch Mitteldeutschland" (2005)		Documentary
+"Per amore del mio popolo" (2014)			Drama
+"Per contra" (2006)					Talk-Show
+"Per molts anys" (1983)					Comedy
+"Per molts anys" (1983)					Talk-Show
+"Per ongeluk" (1971)					Drama
+"Per seconde wijzer" (1967)				Game-Show
+"Per sempre (o no)" (2013)				Documentary
+"Per un pugno di puntate" (2006)			Game-Show
+"Perahia Plays Beethoven" (1989)			Music
+"Percepciones" (2008)					Horror
+"Percepciones" (2008)					Thriller
+"Perception or Reality" (2013)				Crime
+"Perception or Reality" (2013)				Drama
+"Perception or Reality" (2013)				Short
+"Perception" (2012)					Crime
+"Perception" (2012)					Drama
+"Perception" (2012)					Mystery
+"Perception" (2012)					Thriller
+"Perceptions" (2004)					Drama
+"Perceptions" (2014)					Drama
+"Percy Jackson Webseries" (2016)			Fantasy
+"Percy Stuart" (1969)					Adventure
+"Percy the Park Keeper" (1996)				Animation
+"Percy tårar" (1996)					Comedy
+"Percy vs Percy" (2011)					Comedy
+"Percy's Mercy" (2013)					Crime
+"Percy's Tiger Tales" (2012)				Animation
+"Perdelo todo" (2006)					Game-Show
+"Perdi Hasta El Nombre" (2009)				Mystery
+"Perdidamente Florbela" (2012)				Biography
+"Perdidamente Florbela" (2012)				Drama
+"Perdidos en el espacio" (1999)				Comedy
+"Perdidos en la Ciudad" (2010)				Reality-TV
+"Perdidos en la tribu" (2008)				Reality-TV
+"Perdidos na Tribo" (2011)				Reality-TV
+"Perdoa-me" (1994)					Reality-TV
+"Perdona nuestros pecados" (1994)			Comedy
+"Perdona nuestros pecados" (1998)			Comedy
+"Perdone la Hora" (2000)				Comedy
+"Perdóname, Señor" (2017)				Drama
+"Pere Noel" (2006)					Comedy
+"Perechea Potrivita" (2011)				Reality-TV
+"Peregrina" (1973)					Romance
+"Peregrina" (2005)					Romance
+"Peregrinos" (2015)					Mystery
+"Perekrestok v Astane" (2014)				Drama
+"Perekryostok" (1996)					Drama
+"Perestroika" (????)					Crime
+"Perestroika" (????)					Drama
+"Perestroika" (????)					Thriller
+"Perevodchik" (2014)					War
+"Perez Hilton Superfan" (2011)				Talk-Show
+"Perfect 10 Model Boxing" (2006)			Sport
+"Perfect Bathroom Trip SONG" (2010) {{SUSPENDED}}	Comedy
+"Perfect Catch" (2009)					Reality-TV
+"Perfect Couple" (2014)					Romance
+"Perfect Couples" (2010)				Comedy
+"Perfect Couples" (2010)				Romance
+"Perfect Day: The Funeral" (2006)			Drama
+"Perfect Disaster" (2006)				Documentary
+"Perfect Disaster" (2006) {Solar Storm (#1.2)}		Drama
+"Perfect Disaster" (2006) {Super Tornado (#1.1)}	Documentary
+"Perfect Girlfriend" (2016)				Comedy
+"Perfect Hair Forever" (2004)				Adventure
+"Perfect Hair Forever" (2004)				Animation
+"Perfect Hair Forever" (2004)				Comedy
+"Perfect Match" (1986)					Game-Show
+"Perfect Match" (1990)					Game-Show
+"Perfect Match" (1994)					Game-Show
+"Perfect Match" (2002)					Reality-TV
+"Perfect Match" (2011)					Comedy
+"Perfect Match: New York" (2003)			Romance
+"Perfect Night In" (2007)				Comedy
+"Perfect Night In" (2007)				Documentary
+"Perfect Nothings" (2016)				Drama
+"Perfect Nothings" (2016)				Music
+"Perfect Nothings" (2016)				Romance
+"Perfect Nothings" (2016)				Short
+"Perfect Pair" (2017)					Comedy
+"Perfect Partner" (2002)				Family
+"Perfect Partner" (2002)				Reality-TV
+"Perfect Partner" (2002)				Romance
+"Perfect Proposal" (2003)				Reality-TV
+"Perfect Score" (2013)					Game-Show
+"Perfect Scoundrels" (1990)				Comedy
+"Perfect Sishebo" (2014)				Reality-TV
+"Perfect Storms: Disasters That Changed the World" (2013)	History
+"Perfect Strangers" (1986)				Comedy
+"Perfect Strangers" (1986)				Family
+"Perfect Strangers" (2001)				Comedy
+"Perfect Strangers" (2001)				Drama
+"Perfect Weapon" (2006)					Documentary
+"Perfect World" (2000)					Comedy
+"Perfect..." (2011)					Family
+"Perfection" (2011)					Game-Show
+"Perfectly You" (2007)					Talk-Show
+"Perfeito Coração" (2009)				Drama
+"Perfidia" (1966)					Romance
+"Perfidia" (2012)					Thriller
+"Perfil" (2011)						News
+"Perfil" (2011)						Talk-Show
+"Perfiles Sociopoliticos" (2015)			News
+"Perforama" (2002)					Comedy
+"Performance the Science and Technology of Sports" (2002)	Documentary
+"Performance" (1974)					Drama
+"Performance" (1992)					Drama
+"Performance" (1992) {A Doll's House (#2.2)}		Drama
+"Performance" (1992) {Absolute Hell (#1.1)}		Drama
+"Performance" (1992) {After Miss Julie (#5.6)}		Drama
+"Performance" (1992) {After the Dance (#2.4)}		Drama
+"Performance" (1992) {Bed (#5.4)}			Drama
+"Performance" (1992) {Hedda Gabler (#3.3)}		Drama
+"Performance" (1992) {King Lear (#6.1)}			Drama
+"Performance" (1992) {Measure for Measure (#4.2)}	Drama
+"Performance" (1992) {Message for Posterity (#4.1)}	Drama
+"Performance" (1992) {Roots (#2.3)}			Drama
+"Performance" (1992) {Shadow of a Gunman (#5.1)}	Drama
+"Performance" (1992) {Tales from Hollywood (#2.1)}	Biography
+"Performance" (1992) {Tales from Hollywood (#2.1)}	Drama
+"Performance" (1992) {Tales from Hollywood (#2.1)}	History
+"Performance" (1992) {The Changeling (#3.5)}		Drama
+"Performance" (1992) {The Maitlands (#3.2)}		Drama
+"Performance" (1992) {The Trials of Oz (#1.5)}		Drama
+"Performance" (1992) {Top Girls (#1.4)}			Drama
+"Performance" (1992) {Uncle Vanya (#1.0)}		Drama
+"Performing as..." (2003)				Music
+"Perfume Chowk" (2010)					Comedy
+"Perguntas do T." (2016)				Talk-Show
+"Peri anemon kai ydaton" (2000)				Comedy
+"Peri anemon kai ydaton" (2000)				Romance
+"Peri gis o logos" (2006)				News
+"Peri kizi" (1991)					Fantasy
+"Peri-diavazontas" (1999)				Documentary
+"Peridot Flight" (1960)					Drama
+"Periferija city" (2010)				Comedy
+"Perihan Abla" (1986)					Comedy
+"Perihan Abla" (1986)					Family
+"Perihan Abla" (1986)					Romance
+"Periinu monogatari" (1978)				Animation
+"Periinu monogatari" (1978)				Drama
+"Perilous Journeys" (2008)				Adventure
+"Perils of Pendragon" (1974)				Comedy
+"Perimenontas tin Anastasi" (1987)			Documentary
+"Perinnemestari" (2009)					History
+"Perino & Stirewalt: I'll Tell You What" (2016)		Talk-Show
+"Period Drama" (2015)					Comedy
+"Period Piece" (2016)					Comedy
+"Period on Patrol" (2012)				Comedy
+"Periodistas" (1998)					Action
+"Periodistas" (1998)					Comedy
+"Periodistas" (1998)					Drama
+Überblendungen (2016) (V)				Short
+Überblickt man die Jahre (1981) (TV)			Drama
+Überfahrt (1955) (TV)					Drama
+Überfahrt (1984) (TV)					Drama
+Überfahrt (2007)					Drama
+Überfahrt (2007)					Short
+Überfall (1927)						Drama
+Überfall der Mörderrucksäcke (2006)			Comedy
+Überfall der Mörderrucksäcke (2006)			Horror
+Überflieger - Die Kunst des Skispringens (2010)		Documentary
+Überflieger - Die Kunst des Skispringens (2010)		Sport
+Überflüssig (1982)					Short
+Überführung der Leiche des Königs Albert von Sachsen (1902)	Documentary
+Überführung der Leiche des Königs Albert von Sachsen (1902)	Short
+Übergang (2012)						Documentary
+Übergang (2012)						Short
+Übergewicht (1961) (TV)					Drama
+Überlandpartie (1995)					Short
+Überlast (2012)						Drama
+Überlast (2012)						Short
+Überleben (1983)					Short
+Überleben Sie mal (1962) (TV)				Comedy
+Überleben an der Scheidungsfront (2015) (TV)		Comedy
+Überleben an der Wickelfront (2012) (TV)		Comedy
+Überleben in Belfast (2000) (TV)			Documentary
+Überleben in Eberswalde (2000) (TV)			Documentary
+Überleben in Kabul - Eine Stadt und ihre Frauen (2010)	Documentary
+Überleben in Nauheim (2005)				Documentary
+Überleben in New York (1989)				Documentary
+Überlebensgroß Herr Krott - Requiem für einen Unsterblichen (1971) (TV)	Drama
+Überlebenskampf in Argentinien (2003) (TV)		Documentary
+Überlebensstrategien für das neue Jahrtausend (2009)	Drama
+Überlist (2016)						Drama
+Überlist (2016)						Short
+Übermansion (2013) (TV)					Animation
+Übermansion (2013) (TV)					Comedy
+Übermensch (2013)					Fantasy
+Übermensch (2013)					Short
+Übermensch (2015)					Drama
+Übermensch (2015)					Sci-Fi
+Übermensch (2015)					Short
+Übermensch (????)					Comedy
+Übermensch (????)					Crime
+Übermensch (????)					Drama
+Übermorgentalk als Abschluss vom Karlsruher Wissenschaftsfestival Effekte (2013)	Documentary
+Übermorgentalk als Abschluss vom Karlsruher Wissenschaftsfestival Effekte (2013)	Short
+Übermut im Salzkammergut (1963)				Comedy
+Übermut im Salzkammergut (1963)				Musical
+Übermut tut selten gut (1960)				Short
+Übernacht (2014)					Drama
+Übernachtung (2009)					Animation
+Übernachtung (2009)					Documentary
+Übernachtung (2009)					Short
+Überpassioniert (2008)					Drama
+Überpassioniert (2008)					Short
+Überprüfen Genosse (2009)				Drama
+Überprüfen Genosse (2009)				Short
+Überrollt (1999)					Drama
+Überrollt (1999)					Short
+Übers Wasser (????)					Drama
+Überstunden (2012)					Comedy
+Überstunden (2012)					Drama
+Überstunden (2012)					Short
+Übertijd (2009)						Drama
+Übertijd (2009)						Short
+Übertragung (2008)					Documentary
+Übertragung (2008)					Short
+Überwachungskamera (2007)				Crime
+Überwachungskamera (2007)				Short
+Überzeugungsmethode (1964)				Short
+Übriggebliebene ausgereifte Haltungen (2007)		Documentary
+Übriggebliebene ausgereifte Haltungen (2007)		Music
+Übung (1993)						Short
+Übungen mit Darstellern (1968)				Short
+Üdvözlet Magyarországról (1984)				Documentary
+Üdvözlet Magyarországról (1984)				Short
+Üdvözlet Újpalotáról (1980)				Documentary
+Üdvözlet Újpalotáról (1980)				Short
+Üdülési kaleidoszkóp (1977)				Documentary
+Üdülési kaleidoszkóp (1977)				Short
+Ügyes ügyek (1974) (TV)					Drama
+Ühe katuse all (1963)					Drama
+Ühe küla mehed (1961)					Drama
+Ühel päeval (2002)					Drama
+Ühel päeval (2002)					Short
+Üks moment, oodake! (1956)				Comedy
+Üks moment, oodake! (1956)				Short
+Üks mu sõber (2011)					Drama
+Üksi kaks (2010)					Drama
+Üksi kaks (2010)					Short
+Üksinda Kodutu (2014)					Action
+Üksinda Kodutu (2014)					Short
+Üksindusfilm (2010)					Drama
+Üksindusfilm (2010)					Short
+Üksindusfilm 2 (2016)					Comedy
+Üksindusfilm 2 (2016)					Horror
+Üksindusfilm 2 (2016)					Short
+Üleriigiline õnn (2010)					Documentary
+Üleriigiline õnn (2010)					Drama
+Üleriigiline õnn (2010)					Short
+Ülkücüler (2012)					Documentary
+Ümit dünyasi (1969)					Drama
+Ümit kurbanlari (1966)					Drama
+Ümit sokagi (1966)					Drama
+Ümitler kirilinca (1962)				Drama
+Ümitler kirilinca (1962)				Romance
+Ümitsiz bekleyis (1961)					Drama
+Ümitsiz bekleyis (1961)					Romance
+Ümitsiz kapi (1961)					Drama
+Ümmü Sibyan: Zifir (2014)				Horror
+ÜnOfficially Yours (2012)				Comedy
+ÜnOfficially Yours (2012)				Romance
+Ünnep (2009)						Drama
+Ünnep (2009)						Short
+Ünnep (2010)						Drama
+Ünnep (2010)						Short
+Ünnep Esztergomban (1988)				Documentary
+Ünnep Esztergomban (1988)				Short
+Ünnep a Tiszán (1973)					Documentary
+Ünnep a Tiszán (1973)					Short
+Ünnepeink (1982)					Animation
+Ünnepeink (1982)					Short
+Ünnepeltek (2001)					Short
+Ünnepnapok (1967)					Drama
+Ünye de Fatsa arasi (2011)				Comedy
+Ünye de Fatsa arasi (2011)				Documentary
+Üper Super (2013)					Action
+Üper Super (2013)					Comedy
+Üper Super (2013)					Short
+Ürak... ürak... (1976)					Drama
+Ürbarátság (1980)					Documentary
+Ürbarátság (1980)					Short
+Ürgammák, Avagy a 0. Verzió (1998) (TV)			Adventure
+Ürgammák, Avagy a 0. Verzió (1998) (TV)			Family
+Ürgammák, Avagy a 0. Verzió (1998) (TV)			Sci-Fi
+Üride (????)						Horror
+Ürtörténetek (1977) (TV)				Sci-Fi
+Üsküdar Iskelesi (1960)					Comedy
+Üsküdar Iskelesi (1960)					Drama
+Üsküdar Iskelesi (1960)					Romance
+Üsküdar'dan Topkapi'ya (1966)				Comedy
+Üstökös (1998) (TV)					Drama
+Üstökös (1998) (TV)					Short
+Üstökösök (1959)					Documentary
+Üstökösök (1959)					Short
+Üstü kalsin (2003) (V)					Documentary
+Üstü kalsin (2003) (V)					Short
+Üvegfal (2005)						Drama
+Üvegkalitka (1970) (TV)					Drama
+Üvegség (2014)						Documentary
+Üvegtigris (2001)					Comedy
+Üvegtigris 2. (2006)					Comedy
+Üvegtigris 3. (2010)					Comedy
+Üvegvilágom (2001)					Documentary
+Üvey Evlat (2016)					Documentary
+Üvey ana (1967)						Drama
+Üvey ana (1967)						Romance
+Üvey ana (1971)						Drama
+Üvey baba (1949)					Drama
+Üzemgazdaságtan (1985)					Documentary
+Üzemgazdaságtan (1985)					Short
+Üzenetek a Holdról (1990)				Documentary
+Üzenetek a Holdról (1990)				Short
+Üzümcü kizin kaderi (1961)				Drama
+Üzümcü kizin kaderi (1961)				Romance
+Üç Adam (2014)						Comedy
+Üç Adam (2014)						Short
+Üç Harfliler 2: Hablis (2015)				Horror
+Üç Harfliler 3: Karabüyü (2016)				Horror
+Üç Kagitçi (1981)					Comedy
+Üç Karislik Dünya (1984)				Drama
+Üç Maymun (2008)					Drama
+Üç ahbap çavuslar (1975)				Comedy
+Üç arkadas (1958)					Drama
+Üç arkadas (1958)					Romance
+Üç arkadas (1971)					Comedy
+Üç arkadas (1971)					Drama
+Üç arkadas (1971)					Romance
+Üç baba torik (1954)					Comedy
+Üç baba torik (1954)					Fantasy
+Üç garipler (1957)					Drama
+Üç kabadayi (1971)					Adventure
+Üç kagitçilar (1976)					Action
+Üç kagitçilar (1976)					Comedy
+Üç kagitçilar (1976)					Crime
+Üç kardese bir gelin (1965)				Comedy
+Üç kardese bir gelin (1965)				Romance
+Üç kisilik ask (2004) (TV)				Drama
+Üç kizgin cengaver (1971)				Adventure
+Üç kizin hikayesi (1959)				Drama
+Üç korkusuz arkadas (1966)				Drama
+Üç korkusuz arkadas (1966)				War
+Üç kral serseri (1970)					Fantasy
+Üç kursunluk opera (1995) (V)				Comedy
+Üç namus bekçisi (1969)					Drama
+Üç namus bekçisi (1969)					War
+Üç sevdali kiz (1967)					Drama
+Üç sevdali kiz (1967)					Romance
+Üç sevgili (1972)					Comedy
+Üç sevgili (1972)					Romance
+Üç süpermen olimpiyatlarda (1984)			Action
+Üç süpermen olimpiyatlarda (1984)			Adventure
+Üç süpermen olimpiyatlarda (1984)			Fantasy
+Üç süpermen olimpiyatlarda (1984)			Sport
+Üç tekerlekli bisiklet (1962)				Drama
+Üç yaman bakire (1975)					Comedy
+Üç yetimin izdirabi (1956)				Drama
+Üç çapkin gelin (1961)					Romance
+Üç öfkeli adam (1971)					Adventure
+Üç öfkeli genç (1963)					Drama
+Üç, Iki, Bir... Kestik! (2014)				Comedy
+Üçte bir (2009)						Drama
+Üçte bir (2009)						Short
+Üçümüze Bir Dünya (1993)				Drama
+Üçüncü Sayfa (1999)					Drama
+Üçüncü Selim'in Gözdesi (1950)				Drama
+Üçüncü Selim'in Gözdesi (1950)				Romance
+Üçüncü göz (1988)					Drama
+Üçüncü göz (1988)					Fantasy
+Üçüncü kat cinayeti (1954)				Crime
+Üçüncü kat cinayeti (1954)				Drama
+Üçünüze bir mezar (1971)				Adventure
+Üçünüze bir mezar (1971)				Western
+Üçünüzü de mihlarim (1965)				Adventure
+Üçünüzü de mihlarim (1965)				Drama
+Það kemur í ljós (Ça viendra avec la lumière) (2013)	Documentary
+Það kemur í ljós (Ça viendra avec la lumière) (2013)	Family
+Það kemur í ljós (Ça viendra avec la lumière) (2013)	Short
+Þegar Kanínur Fljúga (2011)				Comedy
+Þegar Kanínur Fljúga (2011)				Drama
+Þegar Kanínur Fljúga (2011)				Short
+Þegar það gerist (1998) (TV)				Comedy
+Þegar það gerist (1998) (TV)				Drama
+Þetta Reddast (2013)					Comedy
+Þetta Reddast (2013)					Drama
+Þetta er ekkert mál (2006)				Biography
+Þetta er ekkert mál (2006)				Documentary
+Þjóðskinna (1973) (TV)					Comedy
+Þrestir (2015/I)					Drama
+Þriðja nafni (2003)					Comedy
+Þriðja nafni (2003)					Drama
+Þriðja nafni (2003)					Romance
+Þriðja nafni (2003)					Thriller
+Þrot (????)						Thriller
+Þröng sýn (2005)					Animation
+Þröng sýn (2005)					Short
+Þyngdarafl (2010)					Comedy
+Þyngdarafl (2010)					Drama
+Þyngdarafl (2010)					Sci-Fi
+Þyngdarafl (2010)					Short
+Þú og ég (2015)						Drama
+Þú og ég (2015)						Short
+à deux (2017)						Musical
+à deux (2017)						Romance
+à deux (2017)						Short
+à la recherche de silence (2014)			Drama
+à la recherche de silence (2014)			Short
+à parte (2010)						Crime
+à parte (2010)						Short
+à portée de main: Outrage & Rebellion (2010)		Short
+à prendre ou à laisser (2010)				Drama
+à prendre ou à laisser (2010)				Short
+à propos: philosophie (2016)				Documentary
+âge du temps (2013) (V)					Short
+âÅÌÙÊ ÑÇÅÌØ (2014) {{SUSPENDED}}			Drama
+ärtico (2014)						Drama
+ça goûte le ciel (2014)					Drama
+ça goûte le ciel (2014)					Family
+ça goûte le ciel (2014)					Fantasy
+ça goûte le ciel (2014)					Short
+ça promet ! (2011)					Comedy
+ça promet ! (2011)					Short
+è solo questione di punti di vista (2012)		Action
+è solo questione di punti di vista (2012)		Adventure
+è solo questione di punti di vista (2012)		Comedy
+è solo questione di tempo (2013)			Comedy
+éX-Driver the Movie (2002) (V)				Action
+éX-Driver the Movie (2002) (V)				Animation
+éX-Driver: Nina & Rei Danger Zone (2002) (V)		Animation
+éX-Driver: Nina & Rei Danger Zone (2002) (V)		Short
+échec et mat (2016)					Short
+él (2001) (V)						Adult
+él (2001) (V)						Animation
+él (2001) (V)						Mystery
+él (2001) (V)						Sci-Fi
+él (2001) (V)						Thriller
+êMe (2014)						Drama
+êMe (2014)						Short
+ìCàcaro! (2002)						Short
+ìMaten a ese hijo de la chingada! (2008) (V)		Action
+íslenska, on the Road to Unearth Iceland's Secrets... (2007)	Adventure
+íslenska, on the Road to Unearth Iceland's Secrets... (2007)	Short
+împetu (2017)						Documentary
+ö (2012)						Animation
+ö (2012)						Short
+öregHarcos (2016)					Documentary
+öregHarcos (2016)					Short
+überRICH (2017)						Comedy
+überRICH (2017)						Short
+üç (2012)						Adventure
+üç (2012)						Comedy
+üç (2012)						Short

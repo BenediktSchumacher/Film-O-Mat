@@ -3,7 +3,12 @@ use std::env;
 use std::fs::create_dir_all;
 
 pub fn db_exists() -> bool {
-    false
+    let tmp = env::home_dir();
+    let mut path_buf = tmp.unwrap();
+    path_buf.push("Film-O-Mat");
+    path_buf.push("database");
+    path_buf.set_extension("db");
+    path_buf.as_path().exists()
 }
 
 pub fn create_database() {

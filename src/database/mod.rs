@@ -1,5 +1,6 @@
 use rusqlite::Connection;
 use std::env;
+use std::fs::create_dir_all;
 
 pub fn db_exists() -> bool {
     false
@@ -9,6 +10,10 @@ pub fn create_database() {
     let tmp = env::home_dir();
     let mut path_buf = tmp.unwrap();
     path_buf.push("Film-O-Mat");
+
+    // creates path if not existing
+    create_dir_all(&path_buf);
+
     path_buf.push("database");
     path_buf.set_extension("db");
 

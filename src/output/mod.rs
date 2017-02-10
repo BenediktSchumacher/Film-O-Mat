@@ -5,6 +5,14 @@ use self::term_painter::Color::*;
 use self::term_painter::Attr::*;
 use ::Ergebnis;
 
+/// This method takes a number written in a &str and builds a formatted String
+/// for the output splitted in a Vector which always has the length of 4
+/// It has the following layout:
+///   [0] : (
+///   [1] : 10-x times "-"
+///   [2] : x times "*"
+///   [3] : )
+/// If the input is smaller than 0 or bigger than 10, the ranking will simply be 10
 fn buildRank(x: &str) -> Vec<String> {
     let ziffer = match x {
         "0" => 0,
@@ -34,38 +42,17 @@ fn buildRank(x: &str) -> Vec<String> {
     rank
 }
 
-//x: &str, y: &Vec<String>, act: &Vec<&str>, gen: &str, year: &str, input: &Vec<&str>
-
-/*
-pub fn outputResult(out: Vec<result>) {
-    for i in 0..out.len();
-    let mut colors = Vec::new();
-    for i in 0..3 + y.len() + act.len() {
-        colors.push(White);
-    }
-    let count = createHits(x, y, act, gen, year, input, &mut colors);
-    let hits = match count {
-        0|1|2|3|4|5|6|7|8|9 => 15,
-        100 => 17,
-        _ => 16,
-    };
-    let lengthFilm = 25 + x.chars().count() + 12;
-    let formatFilm = format!("{:-<1$}", "-", lengthFilm);
-    print!("{}\n", formatFilm); //Header
-    print!("= {} {}%{}=\n", Blue.paint("Hit Rate:"), Blue.paint(count), format!("{: <1$}", " ", lengthFilm - hits)); 
-    print!("= Film: {}         Rank: {}{}{}{} =\n", colors[0].paint(x), y[0], y[1], colors[3].paint(&y[2]), y[3]); //Movie and Rank, longest
-    print!("Regisseur: {}{}\n", colors[4].paint())
-    print!("= Main Actors:{}=\n", format!("{: <1$}", " ", lengthFilm - 15));
-    for u in 0..act.len() {
-        print!("=  - {}{}=\n", colors[5+u].paint(&act[u]), format!("{: <1$}", " ", lengthFilm - act[u].chars().count() - 6));
-    }
-    print!("= Genre: {}{} =\n", colors[5+act.len()].paint(gen), format!("{: <1$}", " ", lengthFilm - 11 - gen.chars().count())); //Genre
-    print!("= Year: {}{} =\n", colors[6+act.len()].paint(year), format!("{: <1$}", " ", lengthFilm - 14)); //Year
-    print!("{}\n", formatFilm); //Bottom
-}
-
-*/
-
+/// This method prints every result given in the Vector out
+/// Each result is a struct which contains the following information:
+/// - Moviename "name"
+/// - Ranking "rank"
+/// - Amount of rankings "wertungen"
+/// - Regisseur "regisseur"
+/// - Vector of main actors "actors"
+/// - Genre of the movie "genre"
+/// - Release year of the movie "year"
+/// Additional the method needs the input (search keywords) as a Vector of Strings
+/// for finding the accordances between the results and the keywords
 pub fn outputResult(out: Vec<Ergebnis>, input: &Vec<String>) {
     print!("You were searching for the following:\n");
     for y in 0..input.len(){
@@ -101,6 +88,9 @@ pub fn outputResult(out: Vec<Ergebnis>, input: &Vec<String>) {
     }
 }
 
+/// This method finds the accordances between results and the keywords
+/// and paints them green on the console
+/// Additionally it returns the amount of accordances found
 fn colorize<'a>(out: &'a Ergebnis, input: &Vec<String>, colors: &mut Vec<self::term_painter::Color>) -> usize {
     let mut data = Vec::new();
     let mut count = 0;

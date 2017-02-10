@@ -30,8 +30,17 @@ fn get_connection() -> Connection {
 
 pub fn create_database() {
 
-    // TODO: Verzeichnissbaum erstellen
-    let conn = get_connection();
+    let tmp = env::home_dir();
+    let mut path_buf = tmp.unwrap();
+    path_buf.push("Film-O-Mat");
+
+    // creates path if not existing
+    create_dir_all(&path_buf);
+
+    path_buf.push("database");
+    path_buf.set_extension("db");
+
+    let conn = Connection::open(path_buf).unwrap();
 
     conn.execute("CREATE TABLE IF NOT EXISTS movies (
                   id              INTEGER PRIMARY KEY,

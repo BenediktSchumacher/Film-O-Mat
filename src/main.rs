@@ -1,38 +1,39 @@
 mod output;
 
+pub struct Ergebnis {
+    name : String,
+    rank : String,
+    wertungen : String,
+    regisseur : String,
+    actors : Vec<String>,
+    genre : String,
+    year : String,
+}
+
 fn main() {
     //Only for testing
-    let x = "Star Wars - The Last Generic";
-    let xx = "Die Generic 3";
-    let xxx = "Die Telefloppies";
-    let mut act = Vec::new();
-    act.push("Bruce Lee");
-    act.push("Jason Statham");
-    act.push("Cool Cat");
-    let mut actTwo = Vec::new();
-    actTwo.push("Irgendwer");
-    actTwo.push("Geralt von Riva");
-    let mut actThree = Vec::new();
-    actThree.push("The Rock");
-    actThree.push("james Bond");
-    let yearOne = "1204";
-    let yearTwo = "2013";
-    let yearThree = "2016";
-    let genOne = "Comedy";
-    let genTwo = "Mystery";
-    let genThree = "Horror";
-    let y = output::buildRank(6);
-    let z = output::buildRank (10);
-    let zz = output::buildRank(2);
     let mut input = Vec::new();
-    input.push("Comedy");
-    input.push("Cool Cat");
-    let mut inputTwo = Vec::new();
-    inputTwo.push("**");
-    inputTwo.push("Die Telefloppies");
-    inputTwo.push("Darth Vader");
+    input.push(String::from("Cool Cat"));
+    input.push(String::from("Meh"));
+    input.push(String::from("10"));
+    input.push(String::from("Bruce Lee"));
+    let mut test = Vec::new();
+    let mut act = Vec::new();
+    act.push(String::from("Bruce Lee"));
+    act.push(String::from("Jason Statham"));
+    act.push(String::from("Cool Cat"));
+    let test1 = Ergebnis{name: String::from("Star Wars"), rank: String::from("8"), wertungen: String::from("3450"), regisseur: String::from("Steven Spielberg"), actors: act, genre: String::from("Action"), year: String::from("2012")};
+    test.push(test1);
+    let mut actTwo = Vec::new();
+    actTwo.push(String::from("Irgendwer"));
+    actTwo.push(String::from("Geralt von Riva"));
+    let test2 = Ergebnis{name: String::from("Hallo Welt"), rank: String::from("1"), wertungen: String::from("140"), regisseur: String::from("Mein Friseur"), actors: actTwo, genre: String::from("Stupid"), year: String::from("1980")};
+    test.push(test2);
+    let mut actThree = Vec::new();
+    actThree.push(String::from("The Rock"));
+    actThree.push(String::from("James Bond"));
+    let test3 = Ergebnis{name: String::from("Der Film der Filme"), rank: String::from("10"), wertungen: String::from("154365"), regisseur: String::from("David Zucker"), actors: actThree, genre: String::from("Geilomeilo"), year: String::from("2016")};
+    test.push(test3);
 
-    output::outputResult(x, &y, &act, genOne, yearOne, &input);
-    output::outputResult(xx, &z, &actTwo, genTwo, yearTwo, &input);
-    output::outputResult(xxx, &zz, &actThree, genThree, yearThree, &inputTwo);
+    output::outputResult(test, &input);
 }

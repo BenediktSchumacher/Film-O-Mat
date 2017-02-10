@@ -24,13 +24,12 @@ pub fn create_database() {
 
     let conn = Connection::open(path_buf).unwrap();
 
-    // Example of SQL-Statement
     conn.execute("CREATE TABLE IF NOT EXISTS movies (
                   id              INTEGER PRIMARY KEY,
                   name            TEXT NOT NULL,
                   year            TEXT NOT NULL,
-                  genre           TEXT NOT NULL,
-                  director        TEXT NOT NULL
+                  genre           TEXT,
+                  director        TEXT
                   )",
                  &[])
         .unwrap();

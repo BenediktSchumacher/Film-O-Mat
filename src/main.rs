@@ -1,11 +1,13 @@
-use std::io::prelude::*;
-use::std::env;
+extern crate regex;
 
+use std::io::prelude::*;
+use ::std::env;
+use regex::Regex;
 use std::fs::File;
 
 #[derive(Debug)]
 struct Film {
-    name: String,
+    name: Vec<String>,
     votes: String,
     rating: String,
     year: String,
@@ -13,7 +15,7 @@ struct Film {
 impl Film {
     fn new() -> Self {
         Film {
-            name: String::new(),
+            name: Vec::<String>::new(),
             votes: String::new(),
             rating: String::new(),
             year: String::new(),
@@ -52,25 +54,41 @@ fn main() {
 
     // gehe alle lines des files durch
     for line in lines {
+        let mut film = Film::new();
         let words_in_line:Vec<&str> = line.split_whitespace().collect();
         // first does not interust us
         let mut iter = words_in_line.iter().skip(1);
+
         // vote
         let vote = iter.next();
-        // rating
-        let rating = iter.next();
-        // // not working because every film has different count of words
-        // // name
-        // let name = iter.take_while(|film_name| ;
-        // // year
-        // let year = iter.next();
-        let mut film = Film::new();
         match vote {
             Some(vote) => film.votes.push_str(*vote),
             None => {},
         };
+
+        // rating
+        let rating = iter.next();
         match rating {
             Some(rating) => film.rating.push_str(*rating),
+            None => {},
+        };
+
+        // name
+        let re = Regex::new(r"[(](\d{4})[)]").unwrap();
+        let name:Vec<String> = iter
+            .clone()
+            .take_while(|year| !re.is_match(year))
+            .map(|word| (*word).trim())
+            .map(|word| (*word).to_string())
+            .collect();
+        film.name = name;
+
+        // year
+        let year = iter
+            .skip_while(|year| !re.is_match(year))
+            .next();
+        match year {
+            Some(year) => film.year.push_str(*year),
             None => {},
         };
         all_films.push(film);

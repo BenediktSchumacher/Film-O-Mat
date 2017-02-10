@@ -3,11 +3,13 @@ use std::env;
 use std::fs::create_dir_all;
 
 #[derive(Debug)]
+// A struct to represent a movie to be attached to actors or directors
 pub struct Movie {
     pub title: String,
     pub year: String,
 }
 
+// Checks if a database already exists
 pub fn db_exists() -> bool {
     let tmp = env::home_dir();
     let mut path_buf = tmp.unwrap();
@@ -28,6 +30,11 @@ fn get_connection() -> Connection {
     conn
 }
 
+// Creates a database with movies and related information for movie suggestions
+// Movies: movie titles with associated release date and genre
+// Actors: names of all actors
+// Rankings: associates movie ID with IMDb ratings and number of ratings
+// Crew (actors and directors): associates actors/directors with their movies
 pub fn create_database() {
 
     let tmp = env::home_dir();
@@ -94,6 +101,7 @@ pub fn create_database() {
         .unwrap();
 }
 
+// List of movies with their year of release
 pub fn import_movie(title: &str, year: &str) {
     let conn = get_connection();
 
@@ -104,6 +112,7 @@ pub fn import_movie(title: &str, year: &str) {
         .unwrap();
 }
 
+// Genre information is added to the movie list
 pub fn add_genres(title: &str, year: &str, genre: &str) {
     let conn = get_connection();
 
@@ -115,6 +124,7 @@ pub fn add_genres(title: &str, year: &str, genre: &str) {
         .unwrap();
 }
 
+// List of ratings with information of user ratings
 pub fn add_rating(title: &str, year: &str, rank: &str, votes: &str) {
     let conn = get_connection();
 
@@ -128,6 +138,8 @@ pub fn add_rating(title: &str, year: &str, rank: &str, votes: &str) {
         .unwrap();
 }
 
+// List of all actors, independent of their movies
+// Connection between actors and their movies outsourced to separate list
 pub fn add_actor(name: &str, movies: Vec<Movie>) {
     let conn = get_connection();
 
@@ -147,6 +159,8 @@ pub fn add_actor(name: &str, movies: Vec<Movie>) {
     }
 }
 
+// List of all directors, independent of their movies
+// Connection between directors and their movies outsourced to separate list
 pub fn add_director(name: &str, movies: Vec<Movie>) {
     let conn = get_connection();
 

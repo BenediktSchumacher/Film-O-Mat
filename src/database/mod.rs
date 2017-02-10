@@ -11,18 +11,19 @@ pub fn db_exists() -> bool {
     path_buf.as_path().exists()
 }
 
-pub fn create_database() {
+fn get_connection() -> Connection {
     let tmp = env::home_dir();
     let mut path_buf = tmp.unwrap();
     path_buf.push("Film-O-Mat");
-
-    // creates path if not existing
-    create_dir_all(&path_buf);
-
     path_buf.push("database");
     path_buf.set_extension("db");
 
     let conn = Connection::open(path_buf).unwrap();
+    conn
+}
+
+pub fn create_database() {
+    let conn = get_connection();
 
     conn.execute("CREATE TABLE IF NOT EXISTS movies (
                   id              INTEGER PRIMARY KEY,
@@ -57,6 +58,16 @@ pub fn create_database() {
                   FOREIGN KEY(movie_id) REFERENCES movies(id),
                   FOREIGN KEY(actor_id) REFERENCES actors(id)
                   )",
+                 &[])
+        .unwrap();
+}
+
+pub fn import_movie(title: &str, year: &str) {
+    let conn = get_connection();
+
+    conn.execute(&format!("INSERT INTO movies (name, year) VALUES ('{}', '{}')",
+                          title,
+                          year),
                  &[])
         .unwrap();
 }

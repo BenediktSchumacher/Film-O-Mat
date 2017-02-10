@@ -12,4 +12,6 @@ fn main() {
     if !db_exists() {
         create_database();
     }
+
+    import_movie("Batman", "2005");
 }

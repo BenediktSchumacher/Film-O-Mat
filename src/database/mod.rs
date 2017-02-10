@@ -2,6 +2,12 @@ use rusqlite::Connection;
 use std::env;
 use std::fs::create_dir_all;
 
+#[derive(Debug)]
+pub struct Movie {
+    pub title: String,
+    pub year: String,
+}
+
 pub fn db_exists() -> bool {
     let tmp = env::home_dir();
     let mut path_buf = tmp.unwrap();
@@ -23,6 +29,8 @@ fn get_connection() -> Connection {
 }
 
 pub fn create_database() {
+
+    // TODO: Verzeichnissbaum erstellen
     let conn = get_connection();
 
     conn.execute("CREATE TABLE IF NOT EXISTS movies (
@@ -94,4 +102,23 @@ pub fn add_rating(title: &str, year: &str, rank: &str, votes: u64) {
                           votes),
                  &[])
         .unwrap();
+}
+
+pub fn add_actor(name: &str, movies: Vec<Movie>) {
+    let conn = get_connection();
+
+    conn.execute(&format!("INSERT INTO actors (name) VALUES ('{}')", &name),
+                 &[])
+        .unwrap();
+
+    for m in movies {
+        conn.execute(&format!("INSERT INTO crew (actor_id, movie_id) VALUES ((SELECT id FROM \
+                               actors WHERE name = '{}'), (SELECT id FROM movies WHERE title = \
+                               '{}' AND year = '{}'))",
+                              name,
+                              m.title,
+                              m.year),
+                     &[])
+            .unwrap();
+    }
 }

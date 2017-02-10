@@ -15,7 +15,7 @@ fn main() {
 
     import_movie("Batman", "2005");
     add_genres("Batman", "2005", "Thriller");
-    add_rating("Batman", "2005", "8.324", 500);
+    add_rating("Batman", "2005", "8.324", "500");
 
     let movie_1 = Movie {
         title: "Batman".to_string(),

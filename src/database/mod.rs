@@ -46,8 +46,7 @@ pub fn create_database() {
                   id              INTEGER PRIMARY KEY,
                   title            TEXT NOT NULL,
                   year            TEXT NOT NULL,
-                  genre           TEXT,
-                  director        TEXT
+                  genre           TEXT
                   )",
                  &[])
         .unwrap();
@@ -59,21 +58,37 @@ pub fn create_database() {
                  &[])
         .unwrap();
 
+    conn.execute("CREATE TABLE IF NOT EXISTS directors (
+                  id              INTEGER PRIMARY KEY,
+                  name            TEXT NOT NULL
+                  )",
+                 &[])
+        .unwrap();
+
     conn.execute("CREATE TABLE IF NOT EXISTS rankings (
                   id              INTEGER PRIMARY KEY,
                   movie_id        INTEGER,
                   score           TEXT NOT NULL,
-                  number          INTEGER NOT NULL,
+                  number          TEXT NOT NULL,
                   FOREIGN KEY(movie_id) REFERENCES movies(id)
                   )",
                  &[])
         .unwrap();
 
-    conn.execute("CREATE TABLE IF NOT EXISTS crew (
+    conn.execute("CREATE TABLE IF NOT EXISTS crew_a (
                   actor_id        INTEGER,
                   movie_id        INTEGER,
                   FOREIGN KEY(movie_id) REFERENCES movies(id),
                   FOREIGN KEY(actor_id) REFERENCES actors(id)
+                  )",
+                 &[])
+        .unwrap();
+
+    conn.execute("CREATE TABLE IF NOT EXISTS crew_d (
+                  director_id        INTEGER,
+                  movie_id        INTEGER,
+                  FOREIGN KEY(movie_id) REFERENCES movies(id),
+                  FOREIGN KEY(director_id) REFERENCES directors(id)
                   )",
                  &[])
         .unwrap();
@@ -100,11 +115,11 @@ pub fn add_genres(title: &str, year: &str, genre: &str) {
         .unwrap();
 }
 
-pub fn add_rating(title: &str, year: &str, rank: &str, votes: u64) {
+pub fn add_rating(title: &str, year: &str, rank: &str, votes: &str) {
     let conn = get_connection();
 
     conn.execute(&format!("INSERT INTO rankings (movie_id, score, number) VALUES ((SELECT id \
-                           FROM movies WHERE title = '{}' AND year = '{}'), '{}', {})",
+                           FROM movies WHERE title = '{}' AND year = '{}'), '{}', '{}')",
                           title,
                           year,
                           rank,
@@ -121,9 +136,28 @@ pub fn add_actor(name: &str, movies: Vec<Movie>) {
         .unwrap();
 
     for m in movies {
-        conn.execute(&format!("INSERT INTO crew (actor_id, movie_id) VALUES ((SELECT id FROM \
+        conn.execute(&format!("INSERT INTO crew_a (actor_id, movie_id) VALUES ((SELECT id FROM \
                                actors WHERE name = '{}'), (SELECT id FROM movies WHERE title = \
                                '{}' AND year = '{}'))",
+                              name,
+                              m.title,
+                              m.year),
+                     &[])
+            .unwrap();
+    }
+}
+
+pub fn add_director(name: &str, movies: Vec<Movie>) {
+    let conn = get_connection();
+
+    conn.execute(&format!("INSERT INTO directors (name) VALUES ('{}')", &name),
+                 &[])
+        .unwrap();
+
+    for m in movies {
+        conn.execute(&format!("INSERT INTO crew_d (director_id, movie_id) VALUES ((SELECT id \
+                               FROM directors WHERE name = '{}'), (SELECT id FROM movies WHERE \
+                               title = '{}' AND year = '{}'))",
                               name,
                               m.title,
                               m.year),

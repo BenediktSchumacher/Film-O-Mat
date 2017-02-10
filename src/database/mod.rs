@@ -27,7 +27,7 @@ pub fn create_database() {
 
     conn.execute("CREATE TABLE IF NOT EXISTS movies (
                   id              INTEGER PRIMARY KEY,
-                  name            TEXT NOT NULL,
+                  title            TEXT NOT NULL,
                   year            TEXT NOT NULL,
                   genre           TEXT,
                   director        TEXT
@@ -65,9 +65,33 @@ pub fn create_database() {
 pub fn import_movie(title: &str, year: &str) {
     let conn = get_connection();
 
-    conn.execute(&format!("INSERT INTO movies (name, year) VALUES ('{}', '{}')",
+    conn.execute(&format!("INSERT INTO movies (title, year) VALUES ('{}', '{}')",
                           title,
                           year),
+                 &[])
+        .unwrap();
+}
+
+pub fn add_genres(title: &str, year: &str, genre: &str) {
+    let conn = get_connection();
+
+    conn.execute(&format!("UPDATE movies SET genre = '{}' WHERE title = '{}' AND year = '{}'",
+                          genre,
+                          title,
+                          year),
+                 &[])
+        .unwrap();
+}
+
+pub fn add_rating(title: &str, year: &str, rank: &str, votes: u64) {
+    let conn = get_connection();
+
+    conn.execute(&format!("INSERT INTO rankings (movie_id, score, number) VALUES ((SELECT id \
+                           FROM movies WHERE title = '{}' AND year = '{}'), '{}', {})",
+                          title,
+                          year,
+                          rank,
+                          votes),
                  &[])
         .unwrap();
 }

@@ -1,7 +1,10 @@
 [package]
-name = "Film-O-Mat"
+name = "film-o-mat"
 version = "0.1.0"
 authors = ["Benedikt Schumacher <bschumacher@uos.de>"]
 
 [dependencies]
 regex = "0.2"
+curl = "0.4.3"
+flate2 = "0.2"
+rusqlite = "0.9"

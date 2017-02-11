@@ -2,6 +2,9 @@ use std::io::prelude::*;
 use ::std::env;
 use regex::Regex;
 use std::fs::File;
+use database::*;
+
+macro_rules! regex { ($re:expr) => { ::regex::Regex::new($re).unwrap() } }
 
 #[derive(Debug)]
 struct Film {
@@ -42,4 +45,19 @@ pub fn parse_rating(string: String) {
     println!("{:?}", all_films[5]);
 }
 
-pub fn parse_movies(string: String) {}
+pub fn parse_movies(string: String) {
+    // let re = Regex::new(r"(\n\u{0022}?[#|\+|\-|\*|\/|\.|\,|\!|\:|\&|\%|\$|\§|\w|\d|\s]*\u{0022}? \([\d]{4}\))").unwrap();
+    let re = Regex::new("(\\n\u{0022}?[#|\\+|\\-|\\*|\\041|\\057|\\054|\\056|\\072|\\073|\\044|\\045|\\046|\\w|\\d|\\s]*\u{0022}? \\([\\d]{4}\\))")
+        .unwrap();
+    println!("{:?}", re);
+    for cap in re.captures_iter(string.as_str()) {
+        let mut movie = &cap[0];
+        movie = movie.trim();
+        let length = movie.chars().count();
+        let splitted = movie.split_at(length - 6);
+        let mut year = splitted.1;
+        year = year.trim();
+        // println!("{}", &year[1..5]);
+        import_movie(splitted.0, &year[1..5]);
+    }
+}

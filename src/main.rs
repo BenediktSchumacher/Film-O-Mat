@@ -22,7 +22,10 @@ fn main() {
 
         let movies = decompress(&download_archiv("ftp://ftp.fu-berlin.\
                                            de/pub/misc/movies/database/movies.list.gz"));
+
+
         parse_movies(movies.unwrap());
+
 
     }
 
@@ -32,7 +35,7 @@ fn main() {
     //
     // parse_movies(movies.unwrap());
 
-    // import_movie("Batman", "2005");
+    // import_movie("8 myyttiä työstä", "2005");
     // add_genres("Batman", "2005", "Thriller");
     // add_rating("Batman", "2005", "8.324", "500");
     //

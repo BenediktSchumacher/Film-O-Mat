@@ -1,7 +1,4 @@
-use std::io::prelude::*;
-use ::std::env;
 use regex::Regex;
-use std::fs::File;
 use database::*;
 
 macro_rules! regex { ($re:expr) => { ::regex::Regex::new($re).unwrap() } }
@@ -53,11 +50,9 @@ pub fn parse_movies(string: String) {
     for cap in re.captures_iter(string.as_str()) {
         let mut movie = &cap[0];
         movie = movie.trim();
-        let length = movie.chars().count();
-        let splitted = movie.split_at(length - 6);
-        let mut year = splitted.1;
+        let tmp: Vec<&str> = movie.rsplitn(2, ' ').collect();
+        let mut year = tmp[0];
         year = year.trim();
-        // println!("{}", &year[1..5]);
-        import_movie(splitted.0, &year[1..5]);
+        import_movie(tmp[1], &year[1..5]);
     }
 }

@@ -22,12 +22,27 @@ impl Film {
     }
 }
 
+#[derive(Debug)]
+struct Genre {
+    movie: String,
+    genre: String,
+}
+impl Genre {
+    fn new() -> Self {
+        Genre {
+            movie: String::new(),
+            genre: String::new(),
+        }
+    }
+}
+
 pub fn parse_rating(string: String) {
     let mut all_films: Vec<Film> = Vec::new();
 
-    let re =
-        Regex::new(r"(\n [\s]+ [\d|\.]{10}[\s]+ (\d+)[\s]+ ([\d|\.]{3}) (.+) ([(](\d{4})[)]))")
-            .unwrap();
+    let re = Regex::new(
+        r"(\n [\s]+ [\d|\.]{10}[\s]+ (\d+)[\s]+ ([\d|\.]{3}) (.+) [(](\d{4})[)])"
+    ).unwrap();
+
     for cap in re.captures_iter(string.as_str()) {
         let mut film = Film::new();
         // Debug
@@ -40,6 +55,32 @@ pub fn parse_rating(string: String) {
     }
 
     println!("{:?}", all_films[5]);
+}
+
+fn parse_genre(string: String) {
+
+    // // hardcoded test file
+    // let mut f = File::open("test2");
+    // let mut buffer = String::new();
+    // // TODO: Error handling
+    // f.unwrap().read_to_string(&mut buffer);
+
+    let mut all_genres:Vec<Genre> = Vec::new();
+
+    let re = Regex::new(r"(\n(.+)[\s]+[(]\d{4}[)][\s]+(?:\(V\)|\(TV\))?[\s]*([^\{].+))").unwrap();
+    //                     ^ title     ^ year          ^ (TV|V) filter            ^ Genre
+    for cap in re.captures_iter(string.as_str()) {
+
+        let mut genre = Genre::new();
+        // Debug
+        // println!("Name: {} Genre: {}", &cap[2], &cap[3] );
+        genre.movie.push_str(&cap[2]);
+        genre.genre.push_str(&cap[3]);
+        all_genres.push(genre);
+    }
+
+    // all_genres
+    // println!("{:?}", all_films);
 }
 
 pub fn parse_movies(string: String) {

@@ -1,7 +1,0 @@
-[package]
-name = "abschluss_projekt"
-version = "0.1.0"
-authors = [""]
-
-[dependencies]
-clap = "2.20"

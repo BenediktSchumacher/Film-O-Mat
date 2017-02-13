@@ -1,6 +1,7 @@
 pub mod parser;
 pub mod download;
 pub mod database;
+pub mod input;
 
 extern crate curl;
 extern crate flate2;

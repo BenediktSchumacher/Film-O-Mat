@@ -40,11 +40,21 @@ macro_rules! regex { ($re:expr) => { ::regex::Regex::new($re).unwrap() } }
 // }
 
 pub fn parse_rating(string: String) {
-    let re = Regex::new(r"(\n [\s]+ [\d|\.]{10}[\s]+ (\d+)[\s]+ ([\d|\.]{3}) (.+) [(](\d{4})[)])")
+    // let re = Regex::new(r"(\n [\s]+ [\d|\.]{10}[\s]+ (\d+)[\s]+ ([\d|\.]{3}) (.+) [(](\d{4})[)])")
+    let re = Regex::new("(\\n [\\s]+ [\\d|\\.]{10}[\\s]+ (\\d+)[\\s]+ \
+                         ([\\d|\\.]{3})[\\s]{2}([^\u{0022}]{1}.+) \\(([\\d]{4})\\))")
         .unwrap(); //                    ^number     ^rating      ^title  ^year
 
+    println!("{:?}", &re);
+
     for cap in re.captures_iter(string.as_str()) {
-        import_movie(&cap[4], &cap[5], &cap[3], &cap[2]);
+        let votes = &cap[2].parse::<i32>().unwrap();
+        if *votes > 100000 {
+            import_movie(&cap[4].trim(),
+                         &cap[5].trim(),
+                         &cap[3].trim(),
+                         &cap[2].trim());
+        }
     }
 }
 

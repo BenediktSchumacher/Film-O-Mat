@@ -20,9 +20,10 @@ fn main() {
     if !db_exists() {
         create_database();
 
+        println!("Download started");
         let movies = decompress(&download_archiv("ftp://ftp.fu-berlin.\
                                                   de/pub/misc/movies/database/ratings.list.gz"));
-
+        println!("Download finished...");
         parse_rating(movies.unwrap());
 
 

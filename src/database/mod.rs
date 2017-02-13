@@ -52,9 +52,11 @@ pub fn create_database() {
 
     conn.execute("CREATE TABLE IF NOT EXISTS movies (
                   id              INTEGER PRIMARY KEY,
-                  title            TEXT NOT NULL,
+                  title           TEXT NOT NULL,
                   year            TEXT NOT NULL,
-                  genre           TEXT
+                  genre           TEXT,
+                  rating          TEXT NOT NULL,
+                  number          TEXT NOT NULL
                   )",
                  &[])
         .unwrap();
@@ -69,16 +71,6 @@ pub fn create_database() {
     conn.execute("CREATE TABLE IF NOT EXISTS directors (
                   id              INTEGER PRIMARY KEY,
                   name            TEXT NOT NULL
-                  )",
-                 &[])
-        .unwrap();
-
-    conn.execute("CREATE TABLE IF NOT EXISTS rankings (
-                  id              INTEGER PRIMARY KEY,
-                  movie_id        INTEGER,
-                  score           TEXT NOT NULL,
-                  number          TEXT NOT NULL,
-                  FOREIGN KEY(movie_id) REFERENCES movies(id)
                   )",
                  &[])
         .unwrap();
@@ -103,12 +95,15 @@ pub fn create_database() {
 }
 
 /// List of movies with their year of release
-pub fn import_movie(title: &str, year: &str) {
+pub fn import_movie(title: &str, year: &str, rating: &str, number: &str) {
     let conn = get_connection();
 
-    conn.execute(&format!("INSERT INTO movies (title, year) VALUES ('{}', '{}')",
+    conn.execute(&format!("INSERT INTO movies (title, year, rating, number) VALUES ('{}', '{}', \
+                           '{}', '{}')",
                           title,
-                          year),
+                          year,
+                          rating,
+                          number),
                  &[])
         .unwrap();
 }

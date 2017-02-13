@@ -21,10 +21,9 @@ fn main() {
         create_database();
 
         let movies = decompress(&download_archiv("ftp://ftp.fu-berlin.\
-                                           de/pub/misc/movies/database/movies.list.gz"));
+                                                  de/pub/misc/movies/database/ratings.list.gz"));
 
-
-        parse_movies(movies.unwrap());
+        parse_rating(movies.unwrap());
 
 
     }

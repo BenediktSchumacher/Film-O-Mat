@@ -31,29 +31,4 @@ fn main() {
         parse_genre(genres.unwrap());
 
     }
-
-    let genres = decompress(&download_archiv("ftp://ftp.fu-berlin.\
-                                                  de/pub/misc/movies/database/genres.list.gz"));
-    // println!("Download finished...");
-    // parse_rating(movies.unwrap());
-    parse_genre(genres.unwrap());
-
-    // let movies = decompress(&download_archiv("ftp://ftp.fu-berlin.\
-    // de/pub/misc/movies/database/movies.list.gz"));
-    // println!("{:?}", movies.unwrap());
-    //
-    // parse_movies(movies.unwrap());
-
-    // import_movie("8 myyttiä työstä", "2005");
-    // add_genres("Batman", "2005", "Thriller");
-    // add_rating("Batman", "2005", "8.324", "500");
-    //
-    // let movie_1 = Movie {
-    // title: "Batman".to_string(),
-    // year: "2005".into(),
-    // };
-    //
-    // let name = "Heath Ledgers";
-    //
-    // add_actor(name, vec![movie_1]);
 }

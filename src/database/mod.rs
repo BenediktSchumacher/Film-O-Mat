@@ -141,7 +141,7 @@ pub fn add_genres(title: &str, year: &str, genre: &str) {
 
     for tmp in res {
         existent = true;
-        movie_id = tmp.field;
+        movie_id = tmp.unwrap().field;
     }
 
     if existent {

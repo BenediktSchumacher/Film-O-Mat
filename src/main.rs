@@ -7,6 +7,7 @@ extern crate curl;
 extern crate flate2;
 extern crate rusqlite;
 extern crate regex;
+extern crate clap;
 
 use download::*;
 use download::decompressor::*;

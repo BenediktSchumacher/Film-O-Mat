@@ -1,6 +1,3 @@
-// clap used as argument handler
-extern crate clap;
-
 use clap::{App, Arg};
 
 // This Struct is later given to our main program,

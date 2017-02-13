@@ -22,12 +22,21 @@ fn main() {
 
         println!("Download started");
         let movies = decompress(&download_archiv("ftp://ftp.fu-berlin.\
-                                                  de/pub/misc/movies/database/ratings.list.gz"));
+                                                 de/pub/misc/movies/database/ratings.list.gz"));
+
+        let genres = decompress(&download_archiv("ftp://ftp.fu-berlin.\
+                                                  de/pub/misc/movies/database/genres.list.gz"));
         println!("Download finished...");
         parse_rating(movies.unwrap());
-
+        parse_genre(genres.unwrap());
 
     }
+
+    let genres = decompress(&download_archiv("ftp://ftp.fu-berlin.\
+                                                  de/pub/misc/movies/database/genres.list.gz"));
+    // println!("Download finished...");
+    // parse_rating(movies.unwrap());
+    parse_genre(genres.unwrap());
 
     // let movies = decompress(&download_archiv("ftp://ftp.fu-berlin.\
     // de/pub/misc/movies/database/movies.list.gz"));

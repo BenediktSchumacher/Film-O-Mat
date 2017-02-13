@@ -58,12 +58,12 @@ pub fn parse_rating(string: String) {
     }
 }
 
-fn parse_genre(string: String) {
+pub fn parse_genre(string: String) {
     let re = Regex::new(r"(\n(.+)[\s]+[(](\d{4})[)][\s]+(?:\(V\)|\(TV\))?[\s]*([^\{].+))").unwrap(); //        ^year           ^(TV|V) filter             ^genre
     // Series with form "NAME (YEAR)  {EPISODE INFO}   GENRE" are filtered out
 
     for cap in re.captures_iter(string.as_str()) {
-        add_rating(&cap[4], &cap[5], &cap[3], &cap[2]);
+        add_genres(&cap[2], &cap[3], &cap[4]);
     }
 }
 

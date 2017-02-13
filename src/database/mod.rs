@@ -9,6 +9,11 @@ pub struct Movie {
     pub year: String,
 }
 
+#[derive(Debug)]
+struct Res {
+    pub field: i64,
+}
+
 /// Checks if a database already exists
 pub fn db_exists() -> bool {
     let tmp = env::home_dir();
@@ -54,44 +59,50 @@ pub fn create_database() {
                   id              INTEGER PRIMARY KEY,
                   title           TEXT NOT NULL,
                   year            TEXT NOT NULL,
-                  genre           TEXT,
                   rating          TEXT NOT NULL,
                   number          TEXT NOT NULL
                   )",
                  &[])
         .unwrap();
 
-    conn.execute("CREATE TABLE IF NOT EXISTS actors (
-                  id              INTEGER PRIMARY KEY,
-                  name            TEXT NOT NULL
-                  )",
+    conn.execute("CREATE TABLE IF NOT EXISTS genres (
+                  movie_id        INTEGER NOT NULL,
+                  genre           TEXT NOT NULL
+            )",
                  &[])
         .unwrap();
 
-    conn.execute("CREATE TABLE IF NOT EXISTS directors (
-                  id              INTEGER PRIMARY KEY,
-                  name            TEXT NOT NULL
-                  )",
-                 &[])
-        .unwrap();
-
-    conn.execute("CREATE TABLE IF NOT EXISTS crew_a (
-                  actor_id        INTEGER,
-                  movie_id        INTEGER,
-                  FOREIGN KEY(movie_id) REFERENCES movies(id),
-                  FOREIGN KEY(actor_id) REFERENCES actors(id)
-                  )",
-                 &[])
-        .unwrap();
-
-    conn.execute("CREATE TABLE IF NOT EXISTS crew_d (
-                  director_id        INTEGER,
-                  movie_id        INTEGER,
-                  FOREIGN KEY(movie_id) REFERENCES movies(id),
-                  FOREIGN KEY(director_id) REFERENCES directors(id)
-                  )",
-                 &[])
-        .unwrap();
+    // conn.execute("CREATE TABLE IF NOT EXISTS actors (
+    // id              INTEGER PRIMARY KEY,
+    // name            TEXT NOT NULL
+    // )",
+    // &[])
+    // .unwrap();
+    //
+    // conn.execute("CREATE TABLE IF NOT EXISTS directors (
+    // id              INTEGER PRIMARY KEY,
+    // name            TEXT NOT NULL
+    // )",
+    // &[])
+    // .unwrap();
+    //
+    // conn.execute("CREATE TABLE IF NOT EXISTS crew_a (
+    // actor_id        INTEGER,
+    // movie_id        INTEGER,
+    // FOREIGN KEY(movie_id) REFERENCES movies(id),
+    // FOREIGN KEY(actor_id) REFERENCES actors(id)
+    // )",
+    // &[])
+    // .unwrap();
+    //
+    // conn.execute("CREATE TABLE IF NOT EXISTS crew_d (
+    // director_id        INTEGER,
+    // movie_id        INTEGER,
+    // FOREIGN KEY(movie_id) REFERENCES movies(id),
+    // FOREIGN KEY(director_id) REFERENCES directors(id)
+    // )",
+    // &[])
+    // .unwrap();
 }
 
 /// List of movies with their year of release
@@ -117,12 +128,29 @@ pub fn import_movie(title: &str, year: &str, rating: &str, number: &str) {
 pub fn add_genres(title: &str, year: &str, genre: &str) {
     let conn = get_connection();
 
-    conn.execute(&format!("UPDATE movies SET genre = '{}' WHERE title = '{}' AND year = '{}'",
-                          genre,
-                          title,
-                          year),
-                 &[])
+    let mut stm = conn.prepare(&format!("SELECT id FROM movies WHERE title = '{}' AND year = '{}'",
+                          title.replace("'", "''").as_str(),
+                          year))
         .unwrap();
+
+    let res = stm.query_map(&[], |x| Res { field: x.get(0) })
+        .unwrap();
+
+    let mut existent = false;
+    let mut movie_id = 0;
+
+    for tmp in res {
+        existent = true;
+        movie_id = tmp.field;
+    }
+
+    if existent {
+        conn.execute(&format!("INSERT INTO genres (movie_id, genre) VALUES ('{}', '{}')",
+                              movie_id,
+                              genre),
+                     &[])
+            .unwrap();
+    }
 }
 
 /// List of ratings with information of user ratings

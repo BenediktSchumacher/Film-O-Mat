@@ -8,7 +8,7 @@ use std::process;
 pub struct SearchParams {
     genres: Vec<String>,
     movies: Vec<String>,
-    rating: Vec<f32>,
+    rating: f32,
 }
 
 impl SearchParams {
@@ -17,12 +17,20 @@ impl SearchParams {
         SearchParams {
             genres: Vec::new(),
             movies: Vec::new(),
-            rating: Vec::new(),
+            rating: 0.0,
         }
     }
 
     pub fn get_genres(&self) -> Vec<String> {
         self.genres.clone()
+    }
+
+    pub fn get_movies(&self) -> Vec<String> {
+        self.movies.clone()
+    }
+
+    pub fn get_rating(&self) -> f32 {
+        self.rating
     }
 }
 
@@ -95,13 +103,13 @@ pub fn get_search_params() -> SearchParams {
                 process::exit(0);
             }
         };
-        search_params.rating.push(match val.parse() {
+        search_params.rating = match val.parse() {
             Ok(val) => val,
             Err(err) => {
                 println!("{:?}", err);
                 process::exit(0);
             }
-        });
+        };
         // Debug
         // println!("Rating: {:?}", search_params.rating);
     }

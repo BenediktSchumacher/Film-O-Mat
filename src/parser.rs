@@ -9,7 +9,7 @@ pub fn parse_rating(string: String) {
 
     println!("{:?}", &re);
 
-    for cap in re.captures_iter(string.as_str()) {
+    for cap in re.captures_iter(string.as_str()).skip(260) {
         let votes = &cap[2].parse::<i32>().unwrap();
         if *votes > 100000 {
             import_movie(&cap[4].trim(),

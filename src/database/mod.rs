@@ -1,6 +1,8 @@
 use rusqlite::Connection;
 use std::env;
 use std::fs::create_dir_all;
+use ::input::*;
+use std::collections::HashSet;
 
 /// A struct to represent a movie to be attached to actors or directors
 #[derive(Debug)]
@@ -12,6 +14,11 @@ pub struct Movie {
 #[derive(Debug)]
 struct Res {
     pub field: i64,
+}
+
+#[derive(Debug)]
+struct GenreResult {
+    pub field: String,
 }
 
 /// Checks if a database already exists
@@ -167,44 +174,61 @@ pub fn add_rating(title: &str, year: &str, rank: &str, votes: &str) {
         .unwrap();
 }
 
-/// List of all actors, independent of their movies
-/// Connection between actors and their movies outsourced to separate list
-pub fn add_actor(name: &str, movies: Vec<Movie>) {
+pub fn execute(search_params: SearchParams) {
+    // println!("{:?}", search_params);
     let conn = get_connection();
+    let mut query = String::new();
 
-    conn.execute(&format!("INSERT INTO actors (name) VALUES ('{}')", &name),
-                 &[])
-        .unwrap();
+    query.push_str("SELECT * FROM movies JOIN (SELECT movie_id FROM genres JOIN (SELECT movie_id \
+                    as m_id, COUNT(movie_id) AS ctr FROM (SELECT * FROM genres WHERE ");
 
-    for m in movies {
-        conn.execute(&format!("INSERT INTO crew_a (actor_id, movie_id) VALUES ((SELECT id FROM \
-                               actors WHERE name = '{}'), (SELECT id FROM movies WHERE title = \
-                               '{}' AND year = '{}'))",
-                              name,
-                              m.title,
-                              m.year),
-                     &[])
-            .unwrap();
+    let mut genres_string = String::new();
+    let mut genres: HashSet<String> = HashSet::new();
+
+    if !search_params.get_movies().is_empty() {
+        let mut movie_query = String::new();
+        movie_query.push_str("SELECT genre FROM movies JOIN genres ON id = movie_id WHERE");
+
+        let mut tmp = String::new();
+
+        for movie in search_params.get_movies() {
+            if tmp.is_empty() {
+                tmp.push_str(format!(" title = '{}'", movie.replace("'", "''")).as_str());
+            } else {
+                tmp.push_str(format!(" OR title = '{}'", movie.replace("'", "''")).as_str());
+            }
+        }
+
+        movie_query.push_str(tmp.as_str());
+
+        let mut stm = conn.prepare(movie_query.as_str()).unwrap();
+
+        let res = stm.query_map(&[], |x| GenreResult { field: x.get(0) }).unwrap();
+
+        for genre in res {
+            genres.insert(genre.unwrap().field);
+        }
     }
-}
 
-/// List of all directors, independent of their movies
-/// Connection between directors and their movies outsourced to separate list
-pub fn add_director(name: &str, movies: Vec<Movie>) {
-    let conn = get_connection();
-
-    conn.execute(&format!("INSERT INTO directors (name) VALUES ('{}')", &name),
-                 &[])
-        .unwrap();
-
-    for m in movies {
-        conn.execute(&format!("INSERT INTO crew_d (director_id, movie_id) VALUES ((SELECT id \
-                               FROM directors WHERE name = '{}'), (SELECT id FROM movies WHERE \
-                               title = '{}' AND year = '{}'))",
-                              name,
-                              m.title,
-                              m.year),
-                     &[])
-            .unwrap();
+    for genre in search_params.get_genres() {
+        genres.insert(genre);
     }
+
+    for genre in &genres {
+        if genres_string.is_empty() {
+            genres_string.push_str(format!("genre = '{}'", genre).as_str());
+        } else {
+            genres_string.push_str(format!(" OR genre = '{}'", genre).as_str());
+        }
+    }
+
+    query.push_str(genres_string.as_str());
+
+    query.push_str(format!(") GROUP BY m_id) ON movie_id = m_id WHERE ctr >= {} GROUP BY \
+                            movie_id) ON id = movie_id WHERE rating > {}",
+                           genres.len(),
+                           search_params.get_rating())
+        .as_str());
+    println!("{}", query);
+
 }

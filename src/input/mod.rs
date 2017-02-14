@@ -21,6 +21,10 @@ impl SearchParams {
             rating: Vec::new(),
         }
     }
+
+    pub fn get_genres(&self) -> Vec<String> {
+        self.genres.clone()
+    }
 }
 
 // Creates struct SearchParams in which all given parameters are included.
@@ -110,15 +114,13 @@ pub fn get_search_params() -> SearchParams {
                 process::exit(0);
             }
         };
-        search_params.rating.push(
-            match val.parse() {
-                Ok(val) => val,
-                Err(err) => {
-                    println!("{:?}", err);
-                    process::exit(0);
-                }
+        search_params.rating.push(match val.parse() {
+            Ok(val) => val,
+            Err(err) => {
+                println!("{:?}", err);
+                process::exit(0);
             }
-        );
+        });
         // Debug
         // println!("Rating: {:?}", search_params.rating);
     }

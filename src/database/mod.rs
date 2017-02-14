@@ -79,38 +79,6 @@ pub fn create_database() {
             )",
                  &[])
         .unwrap();
-
-    // conn.execute("CREATE TABLE IF NOT EXISTS actors (
-    // id              INTEGER PRIMARY KEY,
-    // name            TEXT NOT NULL
-    // )",
-    // &[])
-    // .unwrap();
-    //
-    // conn.execute("CREATE TABLE IF NOT EXISTS directors (
-    // id              INTEGER PRIMARY KEY,
-    // name            TEXT NOT NULL
-    // )",
-    // &[])
-    // .unwrap();
-    //
-    // conn.execute("CREATE TABLE IF NOT EXISTS crew_a (
-    // actor_id        INTEGER,
-    // movie_id        INTEGER,
-    // FOREIGN KEY(movie_id) REFERENCES movies(id),
-    // FOREIGN KEY(actor_id) REFERENCES actors(id)
-    // )",
-    // &[])
-    // .unwrap();
-    //
-    // conn.execute("CREATE TABLE IF NOT EXISTS crew_d (
-    // director_id        INTEGER,
-    // movie_id        INTEGER,
-    // FOREIGN KEY(movie_id) REFERENCES movies(id),
-    // FOREIGN KEY(director_id) REFERENCES directors(id)
-    // )",
-    // &[])
-    // .unwrap();
 }
 
 /// List of movies with their year of release

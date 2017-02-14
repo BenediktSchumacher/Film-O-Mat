@@ -30,12 +30,3 @@ pub fn parse_genre(string: String) {
         add_genres(&cap[2], &cap[3], &cap[4]);
     }
 }
-
-pub fn parse_actors() {
-    // TODO: implement it!
-    // Will it ever be implemented? :((
-}
-
-pub fn parse_directors() {
-    // TODO: implement it!
-}

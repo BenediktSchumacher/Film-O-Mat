@@ -73,8 +73,6 @@ pub fn get_search_params() -> SearchParams {
             }
         };
         search_params.genres = genres;
-        // Debug
-        // println!("Genre: {}", genre);
     }
 
     // If a genre was given, save it in our SearchParams Type
@@ -90,8 +88,6 @@ pub fn get_search_params() -> SearchParams {
             }
         };
         search_params.movies = movies;
-        // Debug
-        // println!("Movies: {:?}", search_params.genre);
     }
 
     // If a rating was given, save it in our SearchParams
@@ -110,11 +106,7 @@ pub fn get_search_params() -> SearchParams {
                 process::exit(0);
             }
         };
-        // Debug
-        // println!("Rating: {:?}", search_params.rating);
     }
 
-    // Debug
-    // println!("{:?}", search_params);
     search_params
 }

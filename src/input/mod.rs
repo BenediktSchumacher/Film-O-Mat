@@ -30,7 +30,8 @@ pub fn get_search_params() -> SearchParams {
     let matches = App::new("FOM")
         .arg(Arg::with_name("genre")
             .short("g")
-            .takes_value(true))
+            .takes_value(true)
+            .multiple(true))
         .arg(Arg::with_name("actor")
             .short("a")
             .takes_value(true))
@@ -42,11 +43,14 @@ pub fn get_search_params() -> SearchParams {
 
     // If a genre was given, save it in our SearchParams Type
     if matches.is_present("genre") {
-        let genre = match matches.value_of("genre") {
-            Some(genre) => genre,
+        let genres: Vec<String> = match matches.values_of("genre") {
+            Some(vals) => {
+                vals.map(|x| x.to_string())
+                    .collect()
+            }
             None => panic!(),
         };
-        search_params.genre.push(genre.into());
+        search_params.genre = genres;
         // Debug
         // println!("Genre: {}", genre);
     }
@@ -78,6 +82,5 @@ pub fn get_search_params() -> SearchParams {
     // Debug
     // println!("{:?}", search_params);
 
-    // return struct with all needed search_params
     search_params
 }

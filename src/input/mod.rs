@@ -4,24 +4,29 @@ use clap::{App, Arg};
 // it contains all the needed information to make suggestions of films
 #[derive(Debug, Clone)]
 pub struct SearchParams {
-    genre: Vec<String>,
+    genres: Vec<String>,
     movies: Vec<String>,
     actors: Vec<String>,
+    rating: Vec<f32>,
 }
 
 impl SearchParams {
     // initialize a SearchParams type with empty fields
     fn init() -> Self {
         SearchParams {
-            genre: Vec::new(),
+            genres: Vec::new(),
             movies: Vec::new(),
             actors: Vec::new(),
+            rating: Vec::new(),
         }
     }
 }
 
 // Creates struct SearchParams in which all given parameters are included.
 pub fn get_search_params() -> SearchParams {
+    // status of program
+    println!("[Getting Commandline Input]");
+
     // later given to main program, contains all arguments given in
     // command line
     let mut search_params = SearchParams::init();
@@ -39,6 +44,9 @@ pub fn get_search_params() -> SearchParams {
             .short("m")
             .takes_value(true)
             .multiple(true))
+        .arg(Arg::with_name("rating")
+            .short("r")
+            .takes_value(true))
         .get_matches();
 
     // If a genre was given, save it in our SearchParams Type
@@ -50,7 +58,7 @@ pub fn get_search_params() -> SearchParams {
             }
             None => panic!(),
         };
-        search_params.genre = genres;
+        search_params.genres = genres;
         // Debug
         // println!("Genre: {}", genre);
     }
@@ -79,8 +87,17 @@ pub fn get_search_params() -> SearchParams {
         // Debug
         // println!("Movies: {:?}", search_params.genre);
     }
+
+    if matches.is_present("rating") {
+        let val = match matches.value_of("rating") {
+            Some(vals) => vals,
+            None => panic!(),
+        };
+        search_params.rating.push(val.parse().unwrap());
+        // Debug
+        // println!("Rating: {:?}", search_params.rating);
+    }
     // Debug
     // println!("{:?}", search_params);
-
     search_params
 }

@@ -1,15 +1,48 @@
-extern crate term_painter;
+use term_painter::ToStyle;
+use term_painter::Color::*;
+use term_painter::Attr::*;
+use std::fmt;
 
-use self::term_painter::ToStyle;
-use self::term_painter::Color::*;
-use self::term_painter::Attr::*;
-
-pub struct Ergebnis {
+pub struct SearchResult {
     pub name: String,
-    pub rank: String,
-    pub wertungen: String,
+    pub score: String,
+    pub number: String,
     pub genre: String,
     pub year: String,
+}
+
+impl fmt::Display for SearchResult {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f,
+               "{}",
+               Bold.paint(format!("{} ({})\n", &self.name, &self.year)));
+        let mut stars = String::new();
+        let score: f32 = self.score.parse::<f32>().unwrap();
+        for i in 0..10 {
+            if i < (score + 0.5) as i32 {
+                stars.push_str("\u{2605}");
+            } else {
+                stars.push_str("\u{2606}");
+            }
+        }
+        write!(f,
+               "{}, ({} bei {} Bewertungen)",
+               stars,
+               &self.score,
+               &self.number)
+    }
+}
+
+impl fmt::Debug for SearchResult {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f,
+               "{:?}\n{:?}\n{:?}\n{:?}\n{:?}\n******",
+               self.name,
+               self.year,
+               self.genre,
+               self.score,
+               self.number)
+    }
 }
 
 /// This method takes a number written in a &str and builds a formatted String
@@ -118,14 +151,9 @@ fn buildRank(x: &str) -> Vec<String> {
 // }
 // }
 //
-pub fn output_result(results: Vec<Ergebnis>) {
-    for res in results {
-        println!("{:?}, {:?}, {:?}, {:?}, {:?}",
-                 res.name,
-                 res.rank,
-                 res.wertungen,
-                 res.genre,
-                 res.year);
+pub fn output_result(results: Vec<SearchResult>) {
+    for res in results.into_iter().take(3) {
+        println!("{}", res);
     }
 }
 

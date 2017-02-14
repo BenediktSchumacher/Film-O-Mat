@@ -9,6 +9,7 @@ extern crate flate2;
 extern crate rusqlite;
 extern crate regex;
 extern crate clap;
+extern crate term_painter;
 
 use download::*;
 use download::decompressor::*;

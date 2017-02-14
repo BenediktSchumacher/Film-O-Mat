@@ -3,7 +3,7 @@ use std::env;
 use std::fs::create_dir_all;
 use ::input::*;
 use std::collections::HashSet;
-use output::Ergebnis;
+use output::SearchResult;
 
 /// A struct to represent a movie to be attached to actors or directors
 #[derive(Debug)]
@@ -175,7 +175,7 @@ pub fn add_rating(title: &str, year: &str, rank: &str, votes: &str) {
         .unwrap();
 }
 
-pub fn execute(search_params: SearchParams) -> Vec<Ergebnis> {
+pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
     // println!("{:?}", search_params);
     let conn = get_connection();
     let mut query = String::new();
@@ -226,17 +226,17 @@ pub fn execute(search_params: SearchParams) -> Vec<Ergebnis> {
     query.push_str(genres_string.as_str());
 
     query.push_str(format!(") GROUP BY m_id) ON movie_id = m_id WHERE ctr >= {} GROUP BY \
-                            movie_id) ON id = movie_id WHERE rating > {}",
+                            movie_id) ON id = movie_id WHERE rating > {} ORDER BY rating DESC",
                            genres.len(),
                            search_params.get_rating())
         .as_str());
 
     let mut stm = conn.prepare(query.as_str()).unwrap();
     let res = stm.query_map(&[], |x| {
-        Ergebnis {
+        SearchResult {
             name: x.get(1),
-            rank: x.get(3),
-            wertungen: x.get(4),
+            score: x.get(3),
+            number: x.get(4),
             year: x.get(2),
             genre: "Drama".to_string(),
         }

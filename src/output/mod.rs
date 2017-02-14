@@ -64,6 +64,5 @@ pub fn output_result(results: Vec<SearchResult>) {
         } else {
             process::exit(0);
         }
-        // solange nicht q gedrueckt wurde, lade bei enter naechsten eintrag
     }
 }

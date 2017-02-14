@@ -234,17 +234,33 @@ pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
     let mut stm = conn.prepare(query.as_str()).unwrap();
     let res = stm.query_map(&[], |x| {
         SearchResult {
-            name: x.get(1),
+            title: x.get(1),
             score: x.get(3),
             number: x.get(4),
             year: x.get(2),
-            genre: "Drama".to_string(),
+            genres: Vec::new(),
         }
     });
 
     let mut tmp = Vec::new();
     for movie in res.unwrap() {
-        tmp.push(movie.unwrap());
+        let mut mov = movie.unwrap().clone();
+
+        let mut stm =
+            conn.prepare(format!("SELECT genre FROM genres WHERE movie_id = (SELECT id FROM \
+                                  movies WHERE title = '{}' AND year = '{}') GROUP BY genre \
+                                  ORDER BY genre ASC",
+                                 mov.title,
+                                 mov.year)
+                    .as_str())
+                .unwrap();
+        let genres = stm.query_map(&[], |x| GenreResult { field: x.get(0) }).unwrap();
+        let mut genre = Vec::new();
+        for g in genres {
+            genre.push(g.unwrap().field);
+        }
+        mov.genres = genre;
+        tmp.push(mov);
     }
 
     tmp

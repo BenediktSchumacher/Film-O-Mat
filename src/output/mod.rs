@@ -1,6 +1,8 @@
 use term_painter::ToStyle;
 use term_painter::Attr::*;
 use std::fmt;
+use std::io;
+use std::process;
 
 #[derive(Clone)]
 pub struct SearchResult {
@@ -50,7 +52,18 @@ impl fmt::Debug for SearchResult {
 }
 
 pub fn output_result(results: Vec<SearchResult>) {
+    let further = results.clone();
     for res in results.into_iter().take(3) {
         println!("{}", res);
+    }
+    for output in further.into_iter().skip(3) {
+        let mut buffer = String::new();
+        io::stdin().read_line(&mut buffer);
+        if buffer != "q\n" {
+            println!("{}", output);
+        } else {
+            process::exit(0);
+        }
+        // solange nicht q gedrueckt wurde, lade bei enter naechsten eintrag
     }
 }

@@ -1,48 +1,42 @@
+//! Gets the commandline input and packs it into an usable Stuct.
+//! Data that can be included: genres, movies, rating.
 use clap::{App, Arg};
 use std::process;
 
-// This Struct is later given to our main program,
-// it contains all the needed information to make suggestions of films
+/// Struct contains all the needed information to make suggestions of films
 #[derive(Debug, Clone)]
 pub struct SearchParams {
     genres: Vec<String>,
     movies: Vec<String>,
-    actors: Vec<String>,
     rating: Vec<f32>,
 }
 
 impl SearchParams {
-    // initialize a SearchParams type with empty fields
+    /// initialize a SearchParams type with empty fields
     fn init() -> Self {
         SearchParams {
             genres: Vec::new(),
             movies: Vec::new(),
-            actors: Vec::new(),
             rating: Vec::new(),
         }
     }
 }
 
-// Creates struct SearchParams in which all given parameters are included.
+/// Creates struct SearchParams with all given parameters
 pub fn get_search_params() -> SearchParams {
     // status of program
     println!("Getting Commandline Input ...");
 
-    // later given to main program, contains all arguments given in
-    // command line
+    // search parameters
     let mut search_params = SearchParams::init();
 
-    // our matches, we can later use those to handle our commandline input
+    // matches, we can later use those to handle our commandline input
     let matches = App::new("Film-O-Mat")
         .arg(Arg::with_name("genre")
             .short("g")
             .help("Takes one or more genres")
             .takes_value(true)
             .multiple(true))
-        .arg(Arg::with_name("actor")
-            .short("a")
-            .help("Takes an actor")
-            .takes_value(true))
         .arg(Arg::with_name("movie")
             .short("m")
             .help("Takes one or more movies. e.g. \u{0022}Schindler's List\u{0022}")
@@ -71,20 +65,6 @@ pub fn get_search_params() -> SearchParams {
         // println!("Genre: {}", genre);
     }
 
-    // If an actor was given, save it in our SearchParams Type
-    if matches.is_present("actor") {
-        let actor = match matches.value_of("actor") {
-            Some(actor) => actor,
-            None => {
-                println!("Invalid Actor");
-                process::exit(0);
-            }
-        };
-        search_params.actors.push(actor.into());
-        // Debug
-        // println!("Actor: {}", actor);
-    }
-
     // If a genre was given, save it in our SearchParams Type
     if matches.is_present("movie") {
         let movies: Vec<String> = match matches.values_of("movie") {
@@ -102,6 +82,7 @@ pub fn get_search_params() -> SearchParams {
         // println!("Movies: {:?}", search_params.genre);
     }
 
+    // If a rating was given, save it in our SearchParams
     if matches.is_present("rating") {
         let val = match matches.value_of("rating") {
             Some(vals) => vals,

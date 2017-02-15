@@ -128,22 +128,7 @@ pub fn add_genres(title: &str, year: &str, genre: &str) {
     }
 }
 
-/// List of ratings with information of user ratings
-pub fn add_rating(title: &str, year: &str, rank: &str, votes: &str) {
-    let conn = get_connection();
-
-    conn.execute(&format!("INSERT INTO rankings (movie_id, score, number) VALUES ((SELECT id \
-                           FROM movies WHERE title = '{}' AND year = '{}'), '{}', '{}')",
-                          title,
-                          year,
-                          rank,
-                          votes),
-                 &[])
-        .unwrap();
-}
-
 pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
-    // println!("{:?}", search_params);
     let conn = get_connection();
     let mut query = String::new();
 

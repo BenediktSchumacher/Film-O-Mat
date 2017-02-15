@@ -107,6 +107,5 @@ pub fn get_search_params() -> SearchParams {
             }
         };
     }
-
     search_params
 }

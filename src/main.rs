@@ -1,8 +1,6 @@
-pub mod output;
-pub mod parser;
 pub mod download;
 pub mod database;
-pub mod input;
+pub mod engine;
 
 extern crate curl;
 extern crate flate2;
@@ -14,10 +12,8 @@ extern crate term_painter;
 use download::*;
 use download::decompressor::*;
 use database::*;
-use parser::*;
-use input::*;
-use output::*;
-
+use database::parser::*;
+use engine::*;
 
 fn main() {
 

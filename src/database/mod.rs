@@ -133,7 +133,7 @@ pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
     let mut query = String::new();
 
     query.push_str("SELECT * FROM movies JOIN (SELECT movie_id FROM genres JOIN (SELECT movie_id \
-                    as m_id, COUNT(movie_id) AS ctr FROM (SELECT * FROM genres WHERE ");
+                    as m_id, COUNT(movie_id) AS ctr FROM (SELECT * FROM genres ");
 
     let mut genres_string = String::new();
     let mut genres: HashSet<String> = HashSet::new();
@@ -173,7 +173,7 @@ pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
 
     for genre in &genres {
         if genres_string.is_empty() {
-            genres_string.push_str(format!("genre = '{}'", genre).as_str());
+            genres_string.push_str(format!("WHERE genre = '{}'", genre).as_str());
         } else {
             genres_string.push_str(format!(" OR genre = '{}'", genre).as_str());
         }
@@ -215,7 +215,6 @@ pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
         for g in genres {
             genre.push(g.unwrap().field);
         }
-        println!("{:?}", genre);
         mov.genres = genre;
         tmp.push(mov);
     }

@@ -20,7 +20,7 @@ pub fn parse_rating(string: String) {
 pub fn parse_genre(string: String) {
     // Series starting with "quotation marks" are filtered out
     let re = Regex::new("(\\n([^\u{0022}].*)[\\s]+[\\(](\\d{4})[\\)][\\s]+(?:\
-                         \\(V\\)|\\(TV\\))?[\\s]*([^\\{].+))")
+                         \\(V\\)|\\(TV\\)|\\(VG\\))?[\\s]*([^\\{].+))")
         .unwrap();
     for cap in re.captures_iter(string.as_str()) {
         add_genres(&cap[2], &cap[3], &cap[4]);

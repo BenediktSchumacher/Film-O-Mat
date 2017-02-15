@@ -15,9 +15,9 @@ pub struct SearchResult {
 
 impl fmt::Display for SearchResult {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f,
-               "{}",
-               Bold.paint(format!("{} ({})\n", &self.title, &self.year)));
+        try!(write!(f,
+                    "{}",
+                    Bold.paint(format!("{} ({})\n", &self.title, &self.year))));
         let mut stars = String::new();
         let score: f32 = self.score.parse::<f32>().unwrap();
         for i in 0..10 {
@@ -27,9 +27,9 @@ impl fmt::Display for SearchResult {
                 stars.push_str("\u{2606}");
             }
         }
-        write!(f, "{}", &self.genres[0]);
+        try!(write!(f, "{}", &self.genres[0]));
         for genre in self.genres.clone().into_iter().skip(1) {
-            write!(f, ", {}", genre);
+            try!(write!(f, ", {}", genre));
         }
         write!(f,
                "\n{}, ({} bei {} Bewertungen)",

@@ -48,7 +48,8 @@ pub fn get_search_params() -> SearchParams {
             .short("g")
             .help("Takes one or more genres")
             .takes_value(true)
-            .multiple(true))
+            .multiple(true)
+            .validator(feasable_genre))
         .arg(Arg::with_name("movie")
             .short("m")
             .help("Takes one or more movies. e.g. \u{0022}Schindler's List\u{0022}")
@@ -57,7 +58,8 @@ pub fn get_search_params() -> SearchParams {
         .arg(Arg::with_name("rating")
             .short("r")
             .help("Takes a rating")
-            .takes_value(true))
+            .takes_value(true)
+            .validator(is_rating))
         .get_matches();
 
     // If a genre was given, save it in our SearchParams Type
@@ -108,4 +110,41 @@ pub fn get_search_params() -> SearchParams {
         };
     }
     search_params
+}
+
+fn feasable_genre(value: String) -> Result<(), String> {
+    match value.as_str() {
+        "Action" => Ok(()),
+        "Adult" => Ok(()),
+        "Adventure" => Ok(()),
+        "Animation" => Ok(()),
+        "Biography" => Ok(()),
+        "Comedy" => Ok(()),
+        "Crime" => Ok(()),
+        "Documentary" => Ok(()),
+        "Drama" => Ok(()),
+        "Family" => Ok(()),
+        "Fantasy" => Ok(()),
+        "Film-Noir" => Ok(()),
+        "History" => Ok(()),
+        "Horror" => Ok(()),
+        "Music" => Ok(()),
+        "Musical" => Ok(()),
+        "Mystery" => Ok(()),
+        "Romance" => Ok(()),
+        "Sci-Fi" => Ok(()),
+        "Short" => Ok(()),
+        "Sport" => Ok(()),
+        "Thriller" => Ok(()),
+        "War" => Ok(()),
+        "Western" => Ok(()),
+        _ => Err(String::from("Given Genre is not valid")),
+    }
+}
+
+fn is_rating(value: String) -> Result<(), String> {
+    match value.parse::<f32>() {
+        Ok(_) => Ok(()),
+        _ => Err(String::from("Given Rating is not a number")),
+    }
 }

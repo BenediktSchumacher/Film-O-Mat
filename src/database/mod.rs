@@ -202,7 +202,7 @@ pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
             conn.prepare(format!("SELECT genre FROM genres WHERE movie_id = (SELECT id FROM \
                                   movies WHERE title = '{}' AND year = '{}') GROUP BY genre \
                                   ORDER BY genre ASC",
-                                 mov.title,
+                                 mov.title.replace("'", "''"),
                                  mov.year)
                     .as_str())
                 .unwrap();
@@ -211,6 +211,7 @@ pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
         for g in genres {
             genre.push(g.unwrap().field);
         }
+        println!("{:?}", genre);
         mov.genres = genre;
         tmp.push(mov);
     }

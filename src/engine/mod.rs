@@ -12,7 +12,7 @@ use std::io;
 pub struct SearchParams {
     genres: Vec<String>,
     movies: Vec<String>,
-    rating: f32,
+    rating: f64,
 }
 
 impl SearchParams {
@@ -33,7 +33,7 @@ impl SearchParams {
         self.movies.clone()
     }
 
-    pub fn get_rating(&self) -> f32 {
+    pub fn get_rating(&self) -> f64 {
         self.rating
     }
 }
@@ -41,7 +41,7 @@ impl SearchParams {
 #[derive(Clone)]
 pub struct SearchResult {
     pub title: String,
-    pub score: String,
+    pub score: f64,
     pub number: String,
     pub genres: Vec<String>,
     pub year: String,
@@ -53,9 +53,9 @@ impl fmt::Display for SearchResult {
                     "{}",
                     Bold.paint(format!("{} ({})\n", &self.title, &self.year))));
         let mut stars = String::new();
-        let score: f32 = self.score.parse::<f32>().unwrap();
+        let score: f64 = self.score;
         for i in 0..10 {
-            if i < (score + 0.5) as i32 {
+            if i < (score + 0.5) as i64 {
                 stars.push_str("\u{2605}");
             } else {
                 stars.push_str("\u{2606}");

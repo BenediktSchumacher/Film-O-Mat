@@ -72,7 +72,7 @@ pub fn create_database() {
                   id              INTEGER PRIMARY KEY,
                   title           TEXT NOT NULL,
                   year            TEXT NOT NULL,
-                  rating          TEXT NOT NULL,
+                  rating          REAL NOT NULL,
                   number          TEXT NOT NULL
                   )",
                  &[])
@@ -91,7 +91,7 @@ pub fn import_movie(title: &str, year: &str, rating: &str, number: &str) {
     let conn = get_connection();
 
     conn.execute(&format!("INSERT INTO movies (title, year, rating, number) VALUES ('{}', '{}', \
-                           '{}', '{}')",
+                           {}, '{}')",
                           title.replace("'", "''").as_str(),
                           year,
                           rating,

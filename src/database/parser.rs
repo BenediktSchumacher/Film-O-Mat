@@ -8,7 +8,7 @@ pub fn parse_rating(string: String) {
 
     for cap in re.captures_iter(string.as_str()).skip(260) {
         let votes = &cap[2].parse::<i32>().unwrap();
-        if *votes > 100000 {
+        if *votes > 50000 {
             import_movie(&cap[4].trim(),
                          &cap[5].trim(),
                          &cap[3].trim(),

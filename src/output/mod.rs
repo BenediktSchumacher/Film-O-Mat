@@ -58,11 +58,12 @@ pub fn output_result(results: Vec<SearchResult>) {
     }
     for output in further.into_iter().skip(3) {
         let mut buffer = String::new();
-        io::stdin().read_line(&mut buffer);
-        if buffer != "q\n" {
-            println!("{}", output);
-        } else {
-            process::exit(0);
+        if io::stdin().read_line(&mut buffer).is_ok() {
+            if buffer != "q\n" {
+                println!("{}", output);
+            } else {
+                process::exit(0);
+            }
         }
     }
 }

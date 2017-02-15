@@ -89,11 +89,6 @@ pub fn create_database() {
 pub fn import_movie(title: &str, year: &str, rating: &str, number: &str) {
     let conn = get_connection();
 
-    println!("{}", title.replace("'", "").as_str());
-    println!("{:?}", year);
-    println!("{:?}", rating);
-    println!("{:?}", number);
-
     conn.execute(&format!("INSERT INTO movies (title, year, rating, number) VALUES ('{}', '{}', \
                            '{}', '{}')",
                           title.replace("'", "''").as_str(),

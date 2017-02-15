@@ -32,7 +32,7 @@ impl fmt::Display for SearchResult {
             try!(write!(f, ", {}", genre));
         }
         write!(f,
-               "\n{}, ({} bei {} Bewertungen)",
+               "\n{}, ({} at {} ratings)",
                stars,
                &self.score,
                &self.number)
@@ -52,9 +52,12 @@ impl fmt::Debug for SearchResult {
 }
 
 pub fn output_result(results: Vec<SearchResult>) {
+    if results.is_empty() {
+        cancel_request();
+    }
     let further = results.clone();
     for res in results.into_iter().take(3) {
-        println!("{}", res);
+        println!("\n{}", res);
     }
     for output in further.into_iter().skip(3) {
         let mut buffer = String::new();

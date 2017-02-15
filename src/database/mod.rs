@@ -4,6 +4,7 @@ use std::fs::create_dir_all;
 use ::input::*;
 use std::collections::HashSet;
 use output::SearchResult;
+use std::process;
 
 /// A struct to represent a movie to be attached to actors or directors
 #[derive(Debug)]
@@ -56,7 +57,10 @@ pub fn create_database() {
     path_buf.push("Film-O-Mat");
 
     // creates path if not existing
-    create_dir_all(&path_buf);
+    if create_dir_all(&path_buf).is_err() {
+        println!("Error while creating the Database at {:?}", path_buf);
+        process::exit(1);
+    }
 
     path_buf.push("database");
     path_buf.set_extension("db");

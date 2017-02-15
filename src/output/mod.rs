@@ -55,6 +55,7 @@ pub fn output_result(results: Vec<SearchResult>) {
     if results.is_empty() {
         cancel_request();
     }
+
     let further = results.clone();
     for res in results.into_iter().take(3) {
         println!("\n{}", res);

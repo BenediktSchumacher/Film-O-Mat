@@ -67,3 +67,8 @@ pub fn output_result(results: Vec<SearchResult>) {
         }
     }
 }
+
+pub fn cancel_request() {
+    println!("Sorry, no movie matches to your given Params!");
+    process::exit(0);
+}

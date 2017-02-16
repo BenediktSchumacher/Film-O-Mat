@@ -21,23 +21,27 @@ fn main() {
 
     if !db_exists() {
 
-        print!("Creating Database...");
+        print!("Initialize Database...");
         create_database();
 
-        print!(" Done \nDownload movies...");
+        println!(" Done.");
+        print!("Download movies...");
         let movies = decompress(&download_archiv("ftp://ftp.fu-berlin.\
                                                  de/pub/misc/movies/database/ratings.list.gz"));
-        print!(" Done. \nDownload genres...");
+        println!(" Done.");
+        print!("Download genres...");
         let genres = decompress(&download_archiv("ftp://ftp.fu-berlin.\
                                                   de/pub/misc/movies/database/genres.list.gz"));
-        print!(" Done. \nStart parsing movies...");
+        println!(" Done.");
+        print!("Start parsing movies...");
         parse_rating(movies.unwrap());
-        print!(" Done. \nStart parsing genres...");
+        println!(" Done.");
+        print!("Start parsing genres...");
         parse_genre(genres.unwrap());
         println!(" Done.");
     }
 
-    println!("Database ready!");
+    println!("Database ready.");
 
     output_result(execute(get_search_params()));
 

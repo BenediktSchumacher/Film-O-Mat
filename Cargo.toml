@@ -1,7 +1,12 @@
 [package]
 name = "film-o-mat"
 version = "0.1.0"
-authors = ["Benedikt Schumacher <bschumacher@uos.de>"]
+authors = [
+    "Fabian Gutendorf <fgutendorf@uos.de>",
+    "Anna Sandor <asandor@uos.de",
+    "Benedikt Schumacher <bschumacher@uos.de>",
+    "Arno Stiefvater <astiefvater@uos.de",
+]
 
 [dependencies]
 term-painter = "0.2"

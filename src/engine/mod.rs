@@ -204,10 +204,17 @@ pub fn output_result(results: Vec<SearchResult>) {
         cancel_request();
     }
 
+    println!("{} match(es) found:", &results.len());
+
     let further = results.clone();
     for res in results.into_iter().take(3) {
         println!("\n{}", res);
     }
+
+    if further.len() > 3 {
+        println!("For further suggestions just press ENTER. To quit, type q and press ENTER.");
+    }
+
     for output in further.into_iter().skip(3) {
         let mut buffer = String::new();
         if io::stdin().read_line(&mut buffer).is_ok() {

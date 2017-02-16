@@ -1,3 +1,4 @@
+//! Contains functions for communicating with the database.
 pub mod parser;
 
 use rusqlite::Connection;
@@ -6,24 +7,26 @@ use std::fs::create_dir_all;
 use engine::*;
 use std::collections::HashSet;
 
-/// A struct to represent a movie to be attached to actors or directors
+/// A struct to represent a movie with their release year for movie identity.
 #[derive(Debug)]
 pub struct Movie {
     pub title: String,
     pub year: String,
 }
 
+/// Helper struct for filtering issues.
 #[derive(Debug)]
 struct Res {
     pub field: i64,
 }
 
+/// Helper struct for filtering issues.
 #[derive(Debug)]
 struct GenreResult {
     pub field: String,
 }
 
-/// Checks if a database already exists
+/// Checks if a database already exists.
 pub fn db_exists() -> bool {
     let tmp = env::home_dir();
     let mut path_buf = tmp.unwrap();
@@ -33,7 +36,7 @@ pub fn db_exists() -> bool {
     path_buf.as_path().exists()
 }
 
-/// Returns a connection to existing database
+/// Returns a connection to existing database.
 fn get_connection() -> Connection {
     let tmp = env::home_dir();
     let mut path_buf = tmp.unwrap();
@@ -45,11 +48,9 @@ fn get_connection() -> Connection {
     conn
 }
 
-/// Creates a database with movies and related information for movie suggestions
-/// Movies: movie titles with associated release date and genre
-/// Actors: names of all actors
-/// Rankings: associates movie ID with IMDb ratings and number of ratings
-/// Crew (actors and directors): associates actors/directors with their movies
+/// Creates a database with movies and related information for movie suggestions.
+/// Movies: movie titles with associated release date, rating and number of ratings.
+/// Genres are added to the movies.
 pub fn create_database() {
 
     let tmp = env::home_dir();
@@ -85,7 +86,7 @@ pub fn create_database() {
         .unwrap();
 }
 
-/// List of movies with their year of release
+/// Adds movies to the list.
 pub fn import_movie(title: &str, year: &str, rating: &str, number: &str) {
     let conn = get_connection();
 
@@ -99,7 +100,7 @@ pub fn import_movie(title: &str, year: &str, rating: &str, number: &str) {
         .unwrap();
 }
 
-/// Genre information is added to the movie list
+/// Maps movies with their corresponding genres.
 pub fn add_genres(title: &str, year: &str, genre: &str) {
     let conn = get_connection();
 
@@ -128,6 +129,7 @@ pub fn add_genres(title: &str, year: &str, genre: &str) {
     }
 }
 
+/// Generates the SQL statements to provide movie results.
 pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
     let conn = get_connection();
     let mut query = String::new();

@@ -1,3 +1,4 @@
+//! Downloads files from a given url.
 pub mod decompressor;
 
 use curl::easy::Easy;

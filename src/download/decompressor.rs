@@ -1,3 +1,4 @@
+//! Decompresses a gz-stream to a string.
 use flate2::read::GzDecoder;
 use std::io::prelude::*;
 use std::io;

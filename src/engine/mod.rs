@@ -1,12 +1,12 @@
 //! Gets the commandline input and packs it into an usable Stuct.
-//! Data that can be included: genres, movies, rating.
+//! Data that can be included are genres, movies, rating.
 use clap::{App, Arg};
 use term_painter::ToStyle;
-use term_painter::Attr::*;
-use term_painter::Color::*;
+use term_painter::Attr::Bold;
+use term_painter::Color::{BrightGreen, Yellow};
 use std::{fmt, io, process};
 
-/// Struct contains all the needed information to make suggestions of films
+/// Struct which contains all needed information to make film suggestions.
 #[derive(Debug, Clone)]
 pub struct SearchParams {
     genres: Vec<String>,
@@ -15,7 +15,7 @@ pub struct SearchParams {
 }
 
 impl SearchParams {
-    /// initialize a SearchParams type with empty fields
+    /// Initializes a SearchParams type with empty fields.
     fn init() -> Self {
         SearchParams {
             genres: Vec::new(),
@@ -24,19 +24,23 @@ impl SearchParams {
         }
     }
 
+    /// Returns a vector of Genres.
     pub fn get_genres(&self) -> Vec<String> {
         self.genres.clone()
     }
 
+    // Returns a vector of Movies.
     pub fn get_movies(&self) -> Vec<String> {
         self.movies.clone()
     }
 
+    /// Returns a rating.
     pub fn get_rating(&self) -> f64 {
         self.rating
     }
 }
 
+/// Struct which contains all information attached to a single movie.
 #[derive(Clone)]
 pub struct SearchResult {
     pub title: String,
@@ -84,15 +88,15 @@ impl fmt::Debug for SearchResult {
     }
 }
 
-/// Creates struct SearchParams with all given parameters
+/// Creates a struct SearchParams with the parameters given by commandline arguments.
 pub fn get_search_params() -> SearchParams {
-    // status of program
+    // Status of program
     println!("Getting Commandline Input ...");
 
-    // search parameters
+    // Search parameters
     let mut search_params = SearchParams::init();
 
-    // matches, we can later use those to handle our commandline input
+    // Matches, we can later use those to handle our commandline input
     let matches = App::new("Film-O-Mat")
         .arg(Arg::with_name("genre")
             .short("g")
@@ -162,6 +166,8 @@ pub fn get_search_params() -> SearchParams {
     search_params
 }
 
+/// Checks if a given Genre is a correct genre for IMDb database. The genre string is case sensitive
+/// and doesn't allow typos or character replacement like "Film Noir" instead of "Film-Noir".
 fn feasable_genre(value: String) -> Result<(), String> {
     match value.as_str() {
         "Action" => Ok(()),
@@ -192,13 +198,18 @@ fn feasable_genre(value: String) -> Result<(), String> {
     }
 }
 
+/// Checks if a given rating is a valid float number.
 fn is_rating(value: String) -> Result<(), String> {
-    match value.parse::<f32>() {
+    match value.parse::<f64>() {
         Ok(_) => Ok(()),
         _ => Err(String::from("Given Rating is not a number")),
     }
 }
 
+/// Prints the movies that match the input parameters. The movies are printed in descending order
+/// starting with the highest rating. If more than 3 movies match, the first 3 are displayed
+/// immediately and all others can be accessed consecutively by pressing enter. The suggestion
+/// process can be aborted by entering "q".
 pub fn output_result(results: Vec<SearchResult>) {
     if results.is_empty() {
         cancel_request();
@@ -230,6 +241,7 @@ pub fn output_result(results: Vec<SearchResult>) {
     }
 }
 
+/// If no matching movie is found, a sad message is displayed and the program is ended.
 pub fn cancel_request() {
     println!("Sorry, no movie matches to your given Params! \u{2639}");
     process::exit(0);

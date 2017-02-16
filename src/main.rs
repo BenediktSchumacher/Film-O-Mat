@@ -14,10 +14,12 @@ use download::decompressor::*;
 use database::*;
 use database::parser::*;
 use engine::*;
+use term_painter::ToStyle;
+use term_painter::Color::*;
 
 fn main() {
 
-    println!("Welcome to Film-O-Mat");
+    println!("{}", BrightBlue.paint("Welcome to Film-O-Mat!"));
 
     if !db_exists() {
 

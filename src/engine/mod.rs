@@ -212,7 +212,10 @@ pub fn output_result(results: Vec<SearchResult>) {
     }
 
     if further.len() > 3 {
-        println!("For further suggestions just press ENTER. To quit, type q and press ENTER.");
+        println!("For further suggestions just {}. To quit, {}.",
+            BrightGreen.paint("press ENTER"),
+            BrightGreen.paint("type q and press ENTER"),
+        );
     }
 
     for output in further.into_iter().skip(3) {
@@ -228,6 +231,6 @@ pub fn output_result(results: Vec<SearchResult>) {
 }
 
 pub fn cancel_request() {
-    println!("Sorry, no movie matches to your given Params!");
+    println!("Sorry, no movie matches to your given Params! \u{2639}");
     process::exit(0);
 }

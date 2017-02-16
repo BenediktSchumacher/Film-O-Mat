@@ -1,11 +1,10 @@
 //! Gets the commandline input and packs it into an usable Stuct.
 //! Data that can be included: genres, movies, rating.
 use clap::{App, Arg};
-use std::process;
 use term_painter::ToStyle;
 use term_painter::Attr::*;
-use std::fmt;
-use std::io;
+use term_painter::Color::*;
+use std::{fmt, io, process};
 
 /// Struct contains all the needed information to make suggestions of films
 #[derive(Debug, Clone)]
@@ -67,7 +66,7 @@ impl fmt::Display for SearchResult {
         }
         write!(f,
                "\n{}, ({} at {} ratings)",
-               stars,
+               Yellow.paint(stars),
                &self.score,
                &self.number)
     }

@@ -1,11 +1,10 @@
 pub mod parser;
 
 use rusqlite::Connection;
-use std::env;
+use std::{env, process};
 use std::fs::create_dir_all;
 use engine::*;
 use std::collections::HashSet;
-use std::process;
 
 /// A struct to represent a movie to be attached to actors or directors
 #[derive(Debug)]

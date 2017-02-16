@@ -121,7 +121,9 @@ pub fn add_genres(title: &str, year: &str, genre: &str) {
     }
 
     if existent {
-        conn.execute(&format!("INSERT INTO genres (movie_id, genre) VALUES ('{}', '{}')",
+        conn.execute(&format!("INSERT INTO genres (movie_id, genre) SELECT {0}, '{1}' WHERE NOT \
+                               EXISTS(SELECT 1 FROM genres WHERE movie_id = {0} AND genre = \
+                               '{1}')",
                               movie_id,
                               genre),
                      &[])

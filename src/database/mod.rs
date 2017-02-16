@@ -186,7 +186,7 @@ pub fn execute(search_params: SearchParams) -> Vec<SearchResult> {
     query.push_str(genres_string.as_str());
 
     query.push_str(format!(") GROUP BY m_id) ON movie_id = m_id WHERE ctr >= {} GROUP BY \
-                            movie_id) ON id = movie_id WHERE rating > {} ORDER BY rating DESC",
+                            movie_id) ON id = movie_id WHERE rating >= {} ORDER BY rating DESC",
                            genres.len(),
                            search_params.get_rating())
         .as_str());

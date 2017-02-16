@@ -69,7 +69,7 @@ impl fmt::Display for SearchResult {
             try!(write!(f, ", {}", genre));
         }
         write!(f,
-               "\n{}, ({} at {} ratings)",
+               "\n{} ({} at {} ratings)",
                Yellow.paint(stars),
                &self.score,
                &self.number)

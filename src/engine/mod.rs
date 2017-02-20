@@ -5,6 +5,7 @@ use term_painter::ToStyle;
 use term_painter::Attr::Bold;
 use term_painter::Color::{BrightGreen, Yellow};
 use std::{fmt, io, process};
+use os_type;
 
 /// Struct which contains all needed information to make film suggestions.
 #[derive(Debug, Clone)]
@@ -52,6 +53,7 @@ pub struct SearchResult {
 
 impl fmt::Display for SearchResult {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let os = os_type::current_platform();
         try!(write!(f,
                     "{}",
                     Bold.paint(format!("{} ({})\n", &self.title, &self.year))));
@@ -59,9 +61,15 @@ impl fmt::Display for SearchResult {
         let score: f64 = self.score;
         for i in 0..10 {
             if i < (score + 0.5) as i64 {
-                stars.push_str("\u{2605}");
+                match os {
+                    os_type::OSType::Windows => stars.push_str("*"),
+                    _ => stars.push_str("\u{2605}"),
+                }
             } else {
-                stars.push_str("\u{2606}");
+                match os {
+                    os_type::OSType::Windows => stars.push_str(" "),
+                    _ => stars.push_str("\u{2606}"),
+                }
             }
         }
         try!(write!(f, "{}", &self.genres[0]));
@@ -232,7 +240,11 @@ pub fn output_result(results: Vec<SearchResult>) {
     for output in further.into_iter().skip(3) {
         let mut buffer = String::new();
         if io::stdin().read_line(&mut buffer).is_ok() {
-            if buffer != "q\n" {
+            let compare = match os_type::current_platform() {
+                os_type::OSType::Windows => "q\r\n",
+                _ => "q\n",
+            };
+            if buffer != compare {
                 println!("{}", output);
             } else {
                 process::exit(0);

@@ -1,6 +1,6 @@
 //! The Film-O-Mat -- The only tRUSTworthy movie suggestion engine
 //!
-//! You want to invite your friends for a film night, you are already procRUSTinating your 
+//! You want to invite your friends for a film night, you are already procRUSTinating your
 //! programming exercises or you just want to have a relaxed night with popcorn and cRUSTy pizza,
 //! but all search engines are just fRUSTrating and always suggest the wrong movies?
 //!
@@ -18,6 +18,7 @@ extern crate rusqlite;
 extern crate regex;
 extern crate clap;
 extern crate term_painter;
+extern crate os_type;
 
 use download::*;
 use download::decompressor::*;
